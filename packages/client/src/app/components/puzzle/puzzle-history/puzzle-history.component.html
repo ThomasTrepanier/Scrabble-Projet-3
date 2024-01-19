@@ -1,0 +1,8 @@
+<div class='puzzle-history' *ngFor='let result of results; let index = index;'>
+    <p class='index'>{{index + 1}}</p>
+    <p class='result'>{{result.result}}</p>
+    <p class='points' *ngIf='shouldDisplayPoints(result.result)'>
+        <span class='user-points'>{{result.userPoints}}</span>
+        <span class='total-points'>/{{result.targetPlacement.score}}</span>
+    </p>
+</div>

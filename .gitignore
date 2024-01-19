@@ -1,0 +1,34 @@
+#ignoring .vscode folder but we keep some files for debuging
+/.vscode/chrome
+/.vs/
+
+package-lock.json
+.DS_Store
+
+# Code Coverage Folder
+coverage/
+
+#Node Modules
+/node_modules
+server/assets/dictionaries/index.json
+
+.env
+
+build/
+packages/client/documentation.json
+
+packages/mobile/linux/flutter/generated_plugin_registrant.cc
+
+packages/mobile/linux/flutter/generated_plugin_registrant.h
+
+packages/mobile/linux/flutter/generated_plugins.cmake
+
+packages/mobile/pubspec.lock
+
+.idea
+
+packages/mobile/macos/Flutter/GeneratedPluginRegistrant.swift
+
+packages/mobile/windows/flutter/generated_plugin_registrant.cc
+
+packages/mobile/windows/flutter/generated_plugins.cmake

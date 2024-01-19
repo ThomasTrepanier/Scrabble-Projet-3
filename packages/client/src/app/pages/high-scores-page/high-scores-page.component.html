@@ -1,0 +1,52 @@
+<!-- <div class="page">
+    <app-page-header title="Meilleurs scores"></app-page-header>
+
+    <br />
+
+    <div class="center" id="db-problem" *ngIf="!isInitialized">
+        <div  class="center">
+            <app-icon icon="exclamation-triangle" styling="solid" size="10x"></app-icon>
+        </div>
+        <p class="center">Incapable d'accéder à la base de données</p>
+        <p class="center">Veuillez réessayer plus tard!</p>
+    </div>
+
+    <div class="container" *ngIf="isInitialized">
+            <form [formGroup]="highScoresParameters">
+            <mat-button-toggle-group formControlName="gameType" ngDefaultControl>
+                <mat-button-toggle id="classic-button" [value]="gameTypes.Classic">
+                    <mat-card class="content">
+                        <app-icon icon="chess-pawn" styling="solid"></app-icon>
+                        <p class="text">{{ gameTypes.Classic }}</p>
+                    </mat-card>
+                </mat-button-toggle>
+                <mat-button-toggle id="log2990-button" [value]="gameTypes.LOG2990">
+                    <mat-card class="content">
+                        <app-icon icon="chess-queen" styling="solid"></app-icon>
+                        <p class="text">{{ gameTypes.LOG2990 }}</p>
+                    </mat-card>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+        </form>
+
+
+
+        <div id="high-scores-container" >
+            <div id="high-scores-header">
+                <div class="rank">
+                    Classement
+                </div>
+                <div class="name">
+                    Nom
+                </div>
+                <div class="score">
+                    Score
+                </div>
+
+            </div>
+            <div class="high-score" *ngFor="let highScore of getHighScores()">
+                <app-high-score-box [highScore]="highScore"></app-high-score-box>
+            </div>
+        </div>
+    </div>
+</div> -->

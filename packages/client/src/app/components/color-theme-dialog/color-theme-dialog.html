@@ -1,0 +1,21 @@
+<div class="content">
+    <h2>Choisir une couleur thème</h2>
+
+    <div class="color-themes">
+        <button class="color-theme" style="background-color: #1B5E20" [class.selected]="currentColor === themeColors.Green" (click)="changeTheme(themeColors.Green)"></button>
+        <button class="color-theme" style="background-color: #0A3B48" [class.selected]="currentColor === themeColors.Blue" (click)="changeTheme(themeColors.Blue)"></button>
+        <button class="color-theme" style="background-color: #A801FF" [class.selected]="currentColor === themeColors.Purple" (click)="changeTheme(themeColors.Purple)"></button>
+        <button class="color-theme" style="background-color: #FF01A2" [class.selected]="currentColor === themeColors.Pink" (click)="changeTheme(themeColors.Pink)"></button>
+        <button class="color-theme" style="background-color: #d92f08" [class.selected]="currentColor === themeColors.Red" (click)="changeTheme(themeColors.Red)"></button>
+    </div>
+
+    <div class="button-container">
+        <button mat-flat-button (click)="undoTheme()">
+            Annuler
+        </button> 
+        <button mat-flat-button color="primary" matDialogClose="true">
+            <app-icon icon="check" styling="solid" ></app-icon>
+            Confirmer
+        </button> 
+    </div>
+</div>

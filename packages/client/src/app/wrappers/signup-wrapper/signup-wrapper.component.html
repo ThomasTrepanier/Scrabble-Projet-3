@@ -1,0 +1,7 @@
+<app-signup-container
+    [isEmailTaken]="isEmailTaken"
+    [isUsernameTaken]="isUsernameTaken"
+    (checkEmailUnicity)="handleCheckEmailUnicity($event)"
+    (checkUsernameUnicity)="handleCheckUsernameUnicity($event)"
+    (signup)="handleSignup($event)"
+></app-signup-container>

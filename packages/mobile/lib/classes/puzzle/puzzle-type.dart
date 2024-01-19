@@ -1,0 +1,4 @@
+enum PuzzleType {
+  practice,
+  daily
+}

@@ -1,0 +1,210 @@
+@import '../../style/animations.scss';
+@import '../../style/icon.scss';
+@import '../../style/variables.scss';
+
+$spacing: 8px;
+$margin: 24px;
+$animation-duration: 0.25s;
+$board-size: 100vh;
+$rack-padding: 12px;
+$rack-border: 2px;
+$tile-size: 46px;
+$rack-size: $tile-size + $rack-padding * 4 + $rack-border * 2;
+$side-size: 300px;
+
+#page {
+    display: grid;
+    height: 100%;
+    width: fit-content;
+    grid-template-rows: minmax(550px, min(#{$board-size} - #{$margin} * 2 - #{$rack-size} - #{$spacing}, 800px)) $rack-size;
+    grid-template-columns: minmax(550px, min(#{$board-size} - #{$margin} * 2 - #{$rack-size} - #{$spacing}, 800px)) $side-size;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    padding: $margin;
+    box-sizing: border-box;
+    gap: $spacing;
+
+    #tile-rack {
+        height: $tile-size + $rack-padding * 4;
+        padding: $rack-padding;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        justify-content: center;
+        gap: $spacing;
+
+        .tile-rack {
+            justify-content: center;
+            display: flex;
+            gap: $spacing;
+            padding: $rack-padding;
+            border: solid $rack-border rgb(207, 207, 207);
+            border-radius: 4px;
+
+            .rack-tile-container {
+                position: relative;
+                box-sizing: border-box;
+
+                app-tile {
+                    display: block;
+                    height: $tile-size;
+                    width: $tile-size;
+                    font-size: 1.2em;
+                }
+
+                &:not(.cdk-drag-placeholder):hover {
+                    app-tile {
+                        z-index: 1;
+                        scale: 1.05;
+                        transition: ease-in-out scale 0.1s;
+                    }
+                }
+
+                &.hidden {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+
+                &.cdk-drag-preview {
+                    app-tile {
+                        scale:2;
+                        animation: wiggle 0.25s infinite !important;
+                    }
+                }
+
+                &.cdk-drag-placeholder {
+                    border-radius: 6px;
+                    border: dashed 2px rgb(227, 227, 227);
+                    height: $tile-size;
+                    width: $tile-size;
+                    box-sizing: border-box;
+
+                    app-tile {
+                        opacity: 0;
+                    }
+                }
+
+                &.cdk-drag-animating {
+                    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+                }
+            }
+
+            &.cdk-drop-list-dragging .rack-tile-container {
+                transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing;
+
+            button {
+                line-height: 1em;
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .puzzle-actions {
+        height: $tile-size + $rack-padding * 4;
+        box-sizing: border-box;
+    }
+
+    .puzzle-info {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: $spacing;
+
+        .timer {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing;
+
+            .content {
+                font-size: 3em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                font-weight: 900;
+                gap: $spacing;
+                line-height: 1em;
+            }
+
+            .label {
+                font-weight: 600;
+                opacity: 0.55;
+                text-align: right;
+                width: 100%;
+            }
+
+            &--no-timer {
+                .content {
+                    opacity: 0.55;
+                }
+            }
+
+            &--almost-done {
+                .time-left {
+                    @keyframes pulse-almost-done {
+                        0% { scale: 1; }
+                        25% { scale: 1.05; }
+                        50% { scale: 1; }
+                        100% { scale: 1; }
+                    }
+
+                    animation: pulse-almost-done 1s ease-in-out infinite;
+                }
+            }
+
+            &--critical {
+                .time-left {
+                    @keyframes pulse-critical {
+                        0% { scale: 1; }
+                        50% { scale: 1.15; }
+                        100% { scale: 1; }
+                    }
+
+                    animation: pulse-critical 1s ease-in-out infinite;
+                }
+            }
+        }
+
+        .puzzle-history-container {
+            overflow-y: auto;
+        }
+    }
+
+    .puzzle-actions {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing;
+
+        .action-container {
+            display: flex;
+        }
+
+        button {
+            flex-grow: 1;
+        }
+    }
+}
+
+.rack-tile-container.cdk-drag-preview {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 0.91em;
+}
+
+.tile-rack {
+    &--hovered {
+        border-color: rgb(var(--primary)) !important;
+        background-color: rgba(var(--primary), 0.1);
+    }
+}
+
+.button-danger {
+    background-color: tomato;
+    color: white;
+}

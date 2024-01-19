@@ -1,0 +1,9 @@
+# Flutter-related
+**/Flutter/ephemeral/
+**/Flutter/Flutter-Debug.xcconfig
+**/Flutter/Flutter-Release.xcconfig
+**/Pods/
+
+# Xcode-related
+**/dgph
+**/xcuserdata/

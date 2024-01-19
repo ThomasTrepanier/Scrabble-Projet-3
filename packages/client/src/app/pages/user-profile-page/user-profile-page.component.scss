@@ -1,0 +1,79 @@
+::ng-deep mat-dialog-container.mat-dialog-container {
+    max-height: calc(100vh - 24px) !important;
+}
+
+
+.page {
+    padding-top: 60px;
+
+    .page-content {
+        padding: 16px 24px;
+        max-width: 1024px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+
+
+    .user-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+        padding: 24px;
+    }
+
+    .achievements {
+        &__content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+    }
+
+    .game-result {
+        $size: 30px;
+        height: $size;
+        width: $size;
+        border-radius: $size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.9em;
+
+        &--abandoned {
+            background-color: rgb(213, 213, 213);
+        }
+
+        &--winner {
+            background-color: rgb(255, 200, 0);
+        }
+
+        &--lost {
+            background-color: tomato;
+            color: white;
+        }
+    }
+
+    .analysis-status {
+        $size: 40px;
+        height: $size;
+        width: $size;
+        border-radius: $size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 1em;
+        min-width: unset;
+    }
+
+    .table {
+        width: 100%;
+    }
+}

@@ -1,0 +1,15 @@
+@import '../../../style/variables.scss';
+
+.user-profile-edit-dialog {
+    width: 600px;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+    }
+}

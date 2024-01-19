@@ -1,0 +1,17 @@
+<div class="chatbox" [ngClass]='{ "chatbox--primary": isPrimary }'>
+    <div class="chatbox__header">
+        <div class="chatbox__header__left">
+            <div [ngClass]="{'chatbox__header__icons': true, 'chatbox__header__icons--two-icons': !!icon2}" *ngIf="!hideIcon">
+                <img class="chatbox__header__icon" [appSrc]="icon" [square]="28" />
+                <img class="chatbox__header__icon" [appSrc]="icon2" [square]="28" *ngIf="icon2" />
+            </div>
+            <div class="chatbox__header__title">{{ title }}</div>
+        </div>
+        <div class="chatbox__header__right">
+            <ng-content select="[action-button]"></ng-content>
+        </div>
+    </div>
+    <div class="chatbox__content">
+        <ng-content></ng-content>
+    </div>
+</div>

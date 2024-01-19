@@ -1,0 +1,19 @@
+<mat-card class="content">
+    <div class="avatar__container">
+        <img [appSrc]=" requestingUser.avatar" [square]="50" class="avatar__img" />
+    </div>
+    <div class="name">
+      {{ requestingUser.username }}
+    </div>
+    <app-icon id="observer-icon" *ngIf="isObserver" icon="eye"size="lg"></app-icon>
+
+    <div class="button-container">
+      <button mat-flat-button id="join-button" color="primary" [disabled]="isGroupFull" (click)="accept()" class="accept-button">
+        <app-icon icon="check"size="lg" ></app-icon>
+      </button>
+      <button mat-flat-button color="primary" (click)="reject()" class="reject-button">
+        <app-icon icon="times"size="lg" ></app-icon>
+      </button>
+    </div>
+  </mat-card>
+  

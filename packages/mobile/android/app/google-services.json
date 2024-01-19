@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "332351820518",
+    "project_id": "log3900-polyscrabble",
+    "storage_bucket": "log3900-polyscrabble.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332351820518:android:4ce308acfd7893a11a2127",
+        "android_client_info": {
+          "package_name": "scrabble.log3900.e103"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332351820518-p0djehlnhaf3tcc3ahfcb3btq5h6vrep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP-YzbidHA4d0QXSXWKZCqgjoI9hWhKpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332351820518-p0djehlnhaf3tcc3ahfcb3btq5h6vrep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

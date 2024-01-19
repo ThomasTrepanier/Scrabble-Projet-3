@@ -1,0 +1,64 @@
+@import '../../style/animations.scss';
+@import '../../style/icon.scss';
+@import '../../style/variables.scss';
+
+$spacing: 8px;
+$margin: 24px;
+$animation-duration: 0.25s;
+$min-board-size: 640px;
+$board-size: 100vh;
+$rack-padding: 6px;
+$rack-border: 2px;
+$tile-size: 46px;
+$rack-size: $tile-size + $rack-padding * 4 + $rack-border * 2;
+$side-size: 450px;
+
+.game-page {
+    display: grid;
+    height: 100%;
+    width: fit-content;
+    grid-template-rows: minmax($min-board-size, min(#{$board-size} - #{$margin} * 2 - #{$rack-size} - #{$spacing}, 800px)) $rack-size;
+    grid-template-columns: minmax($min-board-size, min(#{$board-size} - #{$margin} * 2 - #{$rack-size} - #{$spacing}, 800px)) $side-size;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+    padding: $margin;
+    box-sizing: border-box;
+    gap: $spacing;
+
+    &__info {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        gap: $spacing;
+
+        &__stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: $spacing;
+        }
+    }
+
+    &__actions {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+
+        &__button {
+            height: 100%;
+            width: 100%;
+            font-size: 1.15em;
+        }
+    }
+
+    &__actions__over {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+
+        &__button {
+            height: 100%;
+            width: 100%;
+            font-size: 1.15em;
+        }
+    }
+}

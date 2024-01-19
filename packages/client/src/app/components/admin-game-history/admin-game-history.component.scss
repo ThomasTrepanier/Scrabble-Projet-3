@@ -1,0 +1,84 @@
+// @import '../../style/variables.scss';
+
+// table {
+//     width: 100%;
+//     margin: 12px 0;
+// }
+
+// .primary {
+//     color: rgb(var(--primary));
+// }
+// .secondary {
+//     opacity: 0.45;
+// }
+
+// .winner-icon {
+//     color: #f6d43c;
+//     font-size: 0.75em;
+//     vertical-align: middle;
+// }
+
+// .filter-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: flex-end;
+//     margin: 12px 0;
+
+//     mat-form-field {
+//         margin-bottom: -22px;
+//         width: 33%;
+//         min-width: 300px;
+//         max-width: 100%;
+//     }
+// }
+
+// .loading-container {
+//     padding: 24px 0;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     font-size: 1.2em;
+
+//     mat-spinner {
+//         margin-bottom: 24px;
+//     }
+
+//     p {
+//         margin: 0;
+
+//         &.error {
+//             color: tomato;
+//         }
+//         &:not(.error) {
+//             opacity: 0.75;
+//         }
+//     }
+// }
+
+// mat-paginator:not(.visible) {
+//     display: none;
+//     visibility: hidden;
+//     opacity: 0;
+// }
+
+// .buttons {
+//     button {
+//         app-icon {
+//             margin-left: 12px;
+//         }
+
+//         &:not(:last-child) {
+//             margin-right: 12px;
+//         }
+//     }
+// }
+
+// .no-data-message {
+//     text-align: center;
+//     opacity: 0.55;
+//     margin: 12px 0;
+// }
+
+// .mat-column-hasBeenAbandoned {
+//     text-align: center;
+// }

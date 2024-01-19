@@ -1,0 +1,113 @@
+// @import '../../style/variables.scss';
+
+// table {
+//     width: 100%;
+//     margin-bottom: 12px;
+// }
+
+// .primary {
+//     color: rgb(var(--primary));
+// }
+// .secondary {
+//     opacity: 0.45;
+// }
+
+// .filter-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: flex-end;
+//     margin: 12px 0;
+
+//     mat-form-field {
+//         margin-bottom: -22px;
+//         width: 33%;
+//         min-width: 300px;
+//         max-width: 100%;
+//     }
+// }
+
+// .spaced-button {
+//     margin: 2px;
+// }
+
+// .loading-container {
+//     padding: 24px 0;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     font-size: 1.2em;
+
+//     mat-spinner {
+//         margin-bottom: 24px;
+//     }
+
+//     p {
+//         margin: 0;
+
+//         &.error {
+//             color: tomato;
+//         }
+//         &:not(.error) {
+//             opacity: 0.75;
+//         }
+//     }
+// }
+
+// mat-paginator:not(.visible) {
+//     display: none;
+//     visibility: hidden;
+//     opacity: 0;
+// }
+
+// .left-cell {
+//     text-align: left !important;
+// }
+
+// .right-cell {
+//     text-align: right !important;
+// }
+
+// th.mat-header-container {
+//     text-align: center !important;
+// }
+
+// .mat-column-name {
+//     width: 400px;
+//     overflow: hidden;
+//     white-space: nowrap;
+// }
+// .icon {
+//     margin-left: 12px;
+// }
+
+// .horizontal-layout {
+//     display :flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+// }
+
+// .mat-header-row {
+//     height: 40px;
+// }
+// h2 {
+//     text-align: center;
+//     padding-top: 0.5em;
+//     margin-bottom: 0em;
+// }
+
+// ::ng-deep snack-bar-container.success {
+//     background: lighten(rgb(var(--primary)), 70%);
+//     color: rgb(var(--primary));
+    
+//     button {
+//         color: rgb(var(--primary));
+//     }
+// }
+// ::ng-deep snack-bar-container.error {
+//     background: lighten(tomato, 30%);
+//     color: tomato;
+    
+//     button {
+//         color: tomato;
+//     }
+// }

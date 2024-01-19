@@ -1,0 +1,70 @@
+@import '../../../style/variables.scss';
+
+.avatar-selector {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+
+    &__preview {
+        border-radius: 100px;
+    }
+
+    &__upload-button {
+        height: 50px;
+        width: 50px;
+        border-radius: 100px;
+        border: none;
+        background-color: rgb(var(--primary));
+        color: white;
+        font-size: 1.25em;
+        cursor: pointer;
+        transition: ease-in scale 0.1s, ease-in opacity 0.1s;
+
+        &:not(:disabled) {
+            &:hover {
+                opacity: 0.85;
+            }
+
+            &:active {
+                scale: 0.95;
+            }
+        }
+    }
+
+    &__uploadcare {
+        display: none;
+        opacity: 0;
+        position: absolute;
+        top: -1000px;
+        left: -100px;
+    }
+
+    &__preset-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 50px);
+        gap: 6px;
+        justify-content: space-between;
+    }
+
+    &__preset {
+        &__input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        &__image {
+            border-radius: 100px;
+            cursor: pointer;
+            border: solid 2px transparent;
+            opacity: 0.75;
+        }
+    }
+
+    &__preset__input:checked + .avatar-selector__preset__image {
+        scale: 1.1;
+        border-color: rgb(var(--primary));
+        opacity: 1;
+    }
+}

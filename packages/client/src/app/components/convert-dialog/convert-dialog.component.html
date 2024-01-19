@@ -1,0 +1,56 @@
+<!-- <h2 mat-dialog-title>Convertir en partie solo</h2>
+<mat-dialog-content>
+    <div class="container">
+        <form [formGroup]="gameParameters" (ngSubmit)="onSubmit()">
+            <ng-container>
+                <mat-label class="button-toggle-label" id="level-label">Choisissez le niveau de votre adversaire virtuel</mat-label>
+                <mat-button-toggle-group id="level-buttons" formControlName="level">
+                    <mat-button-toggle id="begginer-button" [value]="virtualPlayerLevels.Beginner">
+                        <mat-card class="content">
+                            <app-icon icon="turtle" styling="solid"></app-icon>
+                            <p class="text">{{ virtualPlayerLevels.Beginner }}</p>
+                        </mat-card>
+                    </mat-button-toggle>
+
+                    <mat-button-toggle id="expert-button" [value]="virtualPlayerLevels.Expert">
+                        <mat-card class="content">
+                            <app-icon icon="rabbit" styling="solid"></app-icon>
+                            <p class="text">{{ virtualPlayerLevels.Expert }}</p>
+                        </mat-card>
+                    </mat-button-toggle>
+                </mat-button-toggle-group>
+
+                <mat-form-field appearance="outline">
+                    <mat-label floatLabel="always">Choissez votre adversaire virtuel</mat-label>
+                    <mat-select formControlName="virtualPlayerName">
+                        <mat-option *ngFor="let virtualPlayer of getVirtualPlayerNames()" value="{{ virtualPlayer }}">{{ virtualPlayer }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+            <ng-container>
+                <div class="buttons">
+                    <button mat-flat-button style="background-color: rgb(231, 231, 231)" mat-dialog-close (click)="returnToWaiting()">
+                        Retourner en attente
+                    </button>
+                    <div
+                        matTooltip="Veuillez d'abord sélectionner le nom de votre adversaire virtuel"
+                        matTooltipPosition="above"
+                        [matTooltipDisabled]="gameParameters?.valid"
+                    >
+                        <button
+                            mat-flat-button
+                            mat-dialog-close
+                            color="primary"
+                            type="submit"
+                            id="convert-game-button"
+                            [disabled]="gameParameters?.invalid"
+                            cdkFocusInitial
+                        >
+                            Démarrer la partie solo
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </form>
+    </div>
+</mat-dialog-content> -->

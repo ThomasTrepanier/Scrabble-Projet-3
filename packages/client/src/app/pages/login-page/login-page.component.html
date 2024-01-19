@@ -1,0 +1,23 @@
+<div id="page-content">
+    <div id="tiles">
+        <app-tile [tile]="{ letter: 'C', value: 3 }"></app-tile>
+        <app-tile [tile]="{ letter: 'I', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'L', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'H', value: 4 }"></app-tile>
+        <app-tile [tile]="{ letter: 'M', value: 2 }"></app-tile>
+        <app-tile [tile]="{ letter: 'E', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'G', value: 2 }"></app-tile>
+    </div>
+
+    <div class="content">
+        <app-page-header title="Se connecter" [hideBackButton]="true">
+            <app-header-btn link="/signup" header-button>Créer un compte</app-header-btn>
+        </app-page-header>
+
+        <br />
+
+        <app-login-wrapper></app-login-wrapper>
+    </div>
+
+    <div id="background" style="background: url('assets/img/board_background.svg')"></div>
+</div>

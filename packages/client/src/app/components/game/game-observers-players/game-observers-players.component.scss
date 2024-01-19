@@ -1,0 +1,132 @@
+@import '../../../style/variables.scss';
+@import '../../../style/animations.scss';
+
+.game-observers-players {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, auto);
+    gap: 8px;
+
+    &__player {
+        padding: 12px 10px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+        transition: ease-in scale 0.1s, ease-in opacity 0.1s;
+
+        &__user {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 6px;
+            align-items: center;
+
+            &__avatar {
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+                background-color: #eee;
+            }
+
+            &__name {
+                font-weight: 500;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        &__points {
+            display: grid;
+            grid-template-columns: auto auto;
+            align-items: center;
+            gap: 8px;
+
+            &__value {
+                font-weight: 500;
+            }
+
+            app-tile {
+                height: 16px;
+                width: 16px;
+                font-size: 0.5em;
+            }
+        }
+
+        &--main {
+            grid-row: 1 / 4;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+            align-content: space-between;
+
+            .game-players__player {
+                &__user {
+                    font-size: 1.5em;
+                    gap: 12px;
+
+                    &__avatar {
+                        height: 30px;
+                        width: 30px;
+                    }
+                }
+
+                &__points {
+                    display: grid;
+                    grid-template-rows: 1fr auto;
+                    justify-self: flex-end;
+                    text-align: right;
+
+                    &__value {
+                        font-size: 3em;
+                        font-weight: 600;
+                        line-height: 1.1em;
+                    }
+
+                    &__label {
+                        font-size: 1.05em;
+                        font-weight: 500;
+                        opacity: 0.55;
+                    }
+                }
+            }
+        }
+
+        &--active {
+            background-color: rgb(var(--primary));
+            color: white;
+        }
+
+        &--local-active {
+            animation: pulse-scale 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        &--observed {
+            border: 3px solid #ecb620;
+            box-sizing: border-box;
+            padding: 9px 7px;
+
+            app-icon {
+                color: #ecb620;
+            }
+        }
+
+        &:hover {
+            opacity: 0.85;
+        }
+
+        &:active {
+            scale: 0.95;
+        }
+    }
+}
+.replace-active-jv-button {
+    margin-left: 5px;
+    background-color: rgba(var(--secondary));
+    width: 25px;
+}
+.replace-inactive-jv-button {
+    margin-left: 5px;
+    background-color: rgba(var(--primary));
+    width: 25px;
+}

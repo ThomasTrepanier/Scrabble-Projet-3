@@ -1,0 +1,42 @@
+.achievement-dialog {
+    &__title,
+    &__description {
+        text-align: center;
+    }
+
+    &__description {
+        margin-bottom: 1.5em;
+    }
+
+    &__levels {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        gap: 16px;
+        margin-bottom: 24px;
+    }
+
+    &__level {
+        &__image {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 12px;
+        }
+
+        &__value {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: rgb(var(--primary));
+            text-align: center;
+        }
+
+        &:not(.achievement-dialog__level--completed) {
+            opacity: 0.55;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: end;
+        gap: 12px;
+    }
+}

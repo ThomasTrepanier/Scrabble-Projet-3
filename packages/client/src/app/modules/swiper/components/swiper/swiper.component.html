@@ -1,0 +1,28 @@
+<ng-template #navigation>
+    <app-swiper-navigation
+        (previous)='previous()'
+        (next)='next()'
+        (navigate)='goToSlide($event)'
+        [canPrevious]='canPrevious()'
+        [canNext]='canNext()'
+        [count]='slidesCount'
+        [current]='currentSlide'
+    ></app-swiper-navigation>
+</ng-template>
+
+<div class='swiper'>
+    <ng-container *ngIf='navigationPosition === "top"'>
+        <ng-container *ngTemplateOutlet='navigation'></ng-container>
+    </ng-container>
+
+    <div class='swiper__slides'>
+        <div class='swiper__slides__content' [ngStyle]='{ translate: currentSlide * -100 + "%", transitionDuration: animationTime + "ms" }'>
+            <ng-content></ng-content>
+        </div>
+    </div>
+
+
+    <ng-container *ngIf='navigationPosition === "bottom"'>
+        <ng-container *ngTemplateOutlet='navigation'></ng-container>
+    </ng-container>
+</div>

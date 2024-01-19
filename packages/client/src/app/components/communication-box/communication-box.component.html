@@ -1,0 +1,16 @@
+<mat-card class='communication-box'>
+    <cdk-virtual-scroll-viewport itemSize="30*7" class="scrolling-area" #virtualScroll>
+        <div [class]="'scroll-item ' + msg.senderId" *cdkVirtualFor="let msg of messages">
+            <div class="message-container">
+                <p
+                    [ngClass]="{ isClickable: msg.isClickable }"
+                    class="message"
+                    [innerHTML]="msg.content"
+                    (click)="onMessageClicked($event)"
+                    (mouseleave)="msg.isClickable ? onMessageHoveredOut() : undefined"
+                    (mousemove)='msg.isClickable ? onMessageHovered($event) : undefined'
+                ></p>
+            </div>
+        </div>
+    </cdk-virtual-scroll-viewport>
+</mat-card>

@@ -1,0 +1,177 @@
+@import '../../style/variables.scss';
+
+::ng-deep body {
+    background: $page-background;
+}
+
+$border-radius: 6px;
+
+:host ::ng-deep {
+    span.mat-button-toggle-label-content {
+        line-height: 1em;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+        border-radius: $border-radius;
+    }
+}
+
+::ng-deep .mat-tooltip {
+    font-size: small;
+}
+
+.page {
+    .container {
+        #game-creation-waiting-container {
+            padding-top: 256px;
+            display: grid;
+            align-items: center;
+            justify-items: center;
+
+            mat-label {
+                margin-bottom: 16px;
+                font-weight: 500;
+                font-size: 24px;
+            }
+        }
+
+        max-width: 625px;
+        margin: 0 auto;
+        padding-top: 54px;
+
+        & > mat-card {
+            margin: 0 12px;
+        }
+
+        form {
+            mat-button-toggle-group,
+            mat-form-field {
+                width: 100%;
+            }
+
+            mat-button-toggle-group {
+                margin-bottom: 1.34375em;
+            }
+
+            mat-divider {
+                margin-bottom: 1.34375em;
+            }
+
+            #visibility-buttons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            mat-button-toggle-group {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                border: none;
+                overflow: visible;
+
+                mat-button-toggle {
+                    border-radius: $border-radius;
+                    background: transparent;
+                    border: none;
+                    overflow: visible;
+
+                    mat-card.content {
+                        background: white;
+                        border-radius: $border-radius;
+                        border: none;
+                        box-sizing: border-box;
+                        display: block;
+                        width: 100%;
+                        border: solid 1px rgb(236, 236, 236);
+                        padding: 8px;
+                    }
+                    p,
+                    app-icon {
+                        margin: auto;
+                        line-height: 1em !important;
+                    }
+
+                    app-icon {
+                        font-size: 1.3em;
+                        margin-bottom: 0.3em;
+                        display: block;
+                    }
+
+                    p {
+                        font-size: 0.9em;
+                    }
+
+                    &.mat-button-toggle-checked {
+                        mat-card.content {
+                            background-color: rgba(var(--primary), 0.15);
+                            border: solid 1px rgba(var(--primary), 0.1);
+                            app-icon {
+                                color: rgb(var(--primary));
+                            }
+                        }
+                    }
+
+                    &.mat-button-toggle-disabled {
+                        mat-card.content {
+                            background-color: rgb(241, 241, 241);
+                            border-color: rgb(241, 241, 241);
+                            color: rgba(0, 0, 0, 0.459);
+                        }
+                    }
+                }
+            }
+
+            mat-label.button-toggle-label {
+                display: block;
+                margin-bottom: 0.25em;
+            }
+
+            mat-form-field.margin-top {
+                margin-top: 1.34375em;
+            }
+
+            app-timer-selection {
+                display: block;
+                margin-top: 2.6875em;
+
+            }
+
+            .alert {
+                color: red;
+                display: flex;
+            }
+
+            .alert-group {
+                margin: -1.34375em 0px calc(1.34375em / 2) 2px;
+                height: 100%;
+                color: red;
+            }
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+
+            button {
+                font-size: 1.2em;
+                padding: 6px 16px;
+            }
+        }
+    }
+}
+
+.dictionary-title {
+    font-weight: 500;
+}
+.dictionary-description {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+}
+
+::ng-deep snack-bar-container.error {
+    background: lighten(tomato, 30%);
+    color: tomato;
+
+    button {
+        color: tomato;
+    }
+}

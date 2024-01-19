@@ -1,0 +1,175 @@
+// @import '../../style/variables.scss';
+
+// $border-radius: 6px;
+
+// ::ng-deep body {
+//     background: $page-background;
+// }
+
+// :host ::ng-deep {
+//     span.mat-button-toggle-label-content {
+//         line-height: 1em;
+//         height: 100%;
+//         width: 100%;
+//         padding: 0;
+//         border-radius: $border-radius;
+//     }
+// }
+
+// ::ng-deep .mat-tooltip {
+//     font-size: small;
+// }
+// #db-problem {
+//     margin-top: 100px;
+//     display: inline-block;
+//     align-items: center;
+//     .center {
+//         padding-bottom: 15px;
+//         font-size: x-large;
+//     }
+// }
+
+// .center {
+//     display: grid;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// }
+
+// .page {
+//     .container {
+//         max-width: 625px;
+//         margin: 0 auto;
+//         padding-top: 54px;
+
+//         & > mat-card {
+//             margin: 0 12px;
+//         }
+
+//         form {
+//             mat-button-toggle-group,
+//             mat-form-field {
+//                 width: 100%;
+//             }
+
+//             mat-button-toggle-group {
+//                 margin-bottom: 1.34375em;
+//             }
+
+//             mat-button-toggle-group {
+//                 display: grid;
+//                 grid-template-columns: repeat(2, 1fr);
+//                 gap: 12px;
+//                 border: none;
+//                 overflow: visible;
+
+//                 mat-button-toggle {
+//                     border-radius: $border-radius;
+//                     background: transparent;
+//                     border: none;
+//                     overflow: visible;
+
+//                     mat-card.content {
+//                         background: white;
+//                         border-radius: $border-radius;
+//                         border: none;
+//                         box-sizing: border-box;
+//                         display: block;
+//                         width: 100%;
+//                         border: solid 1px rgb(236, 236, 236);
+//                         padding: 8px;
+//                     }
+//                     p,
+//                     app-icon {
+//                         margin: auto;
+//                         line-height: 1em !important;
+//                     }
+
+//                     app-icon {
+//                         font-size: 1.3em;
+//                         margin-bottom: 0.3em;
+//                         display: block;
+//                     }
+
+//                     p {
+//                         font-size: 0.9em;
+//                     }
+
+//                     &.mat-button-toggle-checked {
+//                         mat-card.content {
+//                             background-color: rgba(var(--primary), 0.15);
+//                             border: solid 1px rgba(var(--primary), 0.1);
+//                             app-icon {
+//                                 color: rgb(var(--primary));
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+
+//             mat-label.button-toggle-label {
+//                 display: block;
+//                 margin-bottom: 0.25em;
+//             }
+//         }
+
+//         #high-scores-container {
+//             border: solid 1px rgb(133, 133, 133);
+//             border-radius: 4px;
+
+//             #high-scores-header {
+//                 display: grid;
+//                 grid-template-columns: 150px 275px 200px;
+//                 justify-self: center;
+//                 width: 100%;
+//                 vertical-align: middle;
+//                 padding: 5px;
+//                 height: 50px;
+
+//                 box-sizing: border-box;
+//                 border-bottom: solid 1px rgb(133, 133, 133);
+
+//                 .rank,
+//                 .score,
+//                 .name {
+//                     display: flex;
+//                     align-items: center;
+//                     font-size: larger;
+//                     text-align: right;
+//                     justify-items: right;
+//                 }
+
+//                 .score {
+//                     padding-right: 20px;
+//                     margin-left: auto;
+//                     text-align: right;
+//                     box-sizing: border-box;
+//                 }
+//             }
+
+//             .high-score {
+//                 display: flex;
+//                 align-self: center;
+//                 justify-content: center;
+//                 align-items: center;
+//                 height: 50px;
+//                 font-size: larger;
+//                 font-family: Roboto, 'Helvetica Neue', sans-serif;
+//             }
+
+//             .high-score:nth-child(2n) {
+//                 background-color: rgba(var(--primary), 0.15);
+//             }
+//         }
+
+//         .buttons {
+//             display: flex;
+//             justify-content: flex-end;
+
+//             button {
+//                 font-size: 1.2em;
+//                 padding: 6px 16px;
+//             }
+//         }
+//     }
+// }

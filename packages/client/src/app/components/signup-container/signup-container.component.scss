@@ -1,0 +1,85 @@
+@import '../../style/variables.scss';
+
+$border-radius: 6px;
+
+::ng-deep .mat-tooltip {
+    font-size: small;
+}
+
+.signup-container {
+    width: 625px;
+    margin: 0 auto;
+
+    & > mat-card {
+        margin: 0 12px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: center;
+
+        h2 {
+            color: rgba(0, 0, 0, 0.87);
+        }
+    }
+
+    form {
+
+        mat-form-field {
+            width: 100%;
+        }
+
+        .field-error {
+            padding-left: 0.25em;
+            color: tomato;
+            font-size: small;
+
+            &.margin-top {
+                margin-top: -1.5em;
+            }
+
+            &.margin-bottom {
+                margin-bottom: -0.5em;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            font-size: 1.2em;
+            padding: 6px 16px;
+        }
+    }
+
+    .avatar {
+        &__container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        &__input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        &__img {
+            border-radius: 100px;
+            cursor: pointer;
+            border: solid 2px transparent;
+            opacity: 0.75;
+        }
+    }
+
+    .avatar__input:checked + .avatar__img {
+        scale: 1.1;
+        border-color: rgb(var(--primary));
+        opacity: 1;
+    }
+}

@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+    {{ content }}
+</mat-dialog-content>
+<mat-dialog-actions>
+    <ng-container *ngFor="let btn of buttons">
+        <button class="dialog-button" [style]="btn.style" mat-button mat-dialog-close *ngIf="btn.closeDialog" (click)="handleButtonClick(btn)">
+            <app-icon *ngIf="btn.icon" [icon]="btn.icon"></app-icon>
+            {{ btn.content }}
+        </button>
+        <button class="dialog-button" [style]="btn.style" mat-button *ngIf="!btn.closeDialog" (click)="handleButtonClick(btn)">
+            <app-icon *ngIf="btn.icon" [icon]="btn.icon"></app-icon>
+            {{ btn.content }}
+        </button>
+    </ng-container>
+</mat-dialog-actions>
+<ng-container *ngIf="checkbox" >
+    <mat-checkbox (change)="handleCheckboxChange($event.checked)" style="margin-top: 15px;">{{ checkbox.content }}</mat-checkbox>
+</ng-container>

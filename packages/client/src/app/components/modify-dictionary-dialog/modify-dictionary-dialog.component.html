@@ -1,0 +1,55 @@
+<!-- <h2 mat-dialog-title>Modifier le dictionnaire</h2>
+<div id="container">
+    <div>
+        <mat-form-field
+            class="form-field"
+            appearance="outline"
+            [formGroup]="formParameters"
+            matTooltip="Le nom du dictionnaire doit être entre 2 et 30 caractères."
+            matTooltipPosition="above"
+        >
+            <mat-label> Nom</mat-label>
+            <input
+                matInput
+                id="dictionaryNameValidator"
+                type="text"
+                formControlName="inputDictionaryTitle"
+                autocomplete="off"
+                (ngModelChange)="ngOnChanges()"
+                (valueChanges)="ngOnChanges()"
+            />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field
+            class="form-field"
+            appearance="outline"
+            [formGroup]="formParameters"
+            matTooltipPosition="above"
+            matTooltip="La description doit être entre 2 et 80 caractères."
+            >
+            <mat-label> Description</mat-label>
+            <input
+                matInput
+                id="dictionaryDescriptionValidator"
+                type="text"
+                formControlName="inputDictionaryDescription"
+                autocomplete="off"
+                (ngModelChange)="ngOnChanges()"
+                (valueChanges)="ngOnChanges()"
+            />
+        </mat-form-field>
+    </div>
+    <div id="buttons-container">
+        <button mat-flat-button color = "primary" (click)="updateDictionary()" [disabled]="!this.isInformationValid()">
+            <app-icon icon="pencil"></app-icon>
+            Modifier
+        </button>
+        <button mat flat button mat-button color = "primary" (click)="closeDialog()">
+            <app-icon icon="ban"></app-icon>
+            Annuler
+        </button> 
+    </div>
+</div>
+    
+ -->

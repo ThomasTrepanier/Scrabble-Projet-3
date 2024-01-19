@@ -1,0 +1,52 @@
+.user-profile-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, auto));
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 24px;
+
+    .user-info {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, auto));
+        gap: 24px;
+        align-items: center;
+
+        .avatar {
+            $size: 110px;
+            height: 110px;
+            width: 110px;
+            border-radius: $size;
+            flex-shrink: 0;
+            flex-grow: 0;
+            background-color: rgb(227, 227, 227);
+        }
+
+        .user {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+
+            h2, h3 {
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 1.1em;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            h3 {
+                font-size: 22px;
+                font-weight: 500;
+                opacity: 0.55;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 6px;
+    }
+}

@@ -1,0 +1,12 @@
+<mat-card class='game-timer'>
+    <app-icon class='game-timer__icon' icon='hourglass-half' styling='solid'></app-icon>
+
+    <div class='game-timer__info'>
+        <div class='game-timer__info__value'>
+            <span class="game-timer__info__value__minutes">{{ timer.minutes }}</span>
+            <span class="game-timer__info__value__separator" [ngClass]='{"game-timer__info__value__separator--running": isTimerRunning()}'>:</span>
+            <span class="game-timer__info__value__seconds">{{ timer.getTimerSecondsPadded() }}</span>
+        </div>
+        <div class='game-timer__info__label'>Temps restant</div>
+    </div>
+</mat-card>

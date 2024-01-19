@@ -1,0 +1,80 @@
+@import '../../../style/variables.scss';
+
+#content {
+    position: relative;
+
+    .spinner {
+        rotate: -145deg;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        &--background {
+            ::ng-deep {
+                circle {
+                    stroke: rgba(0,0,0,0.15);
+                }
+            }
+        }
+        &--result {
+            ::ng-deep {
+                circle {
+                    stroke: unset;
+                }
+            }
+        }
+    }
+
+    .info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+        align-items: center;
+
+        p {
+            margin: 0;
+            text-align: center;
+        }
+
+        .amount {
+            font-weight: 900;
+            font-size: 1.7em;
+            line-height: 1.1em;
+        }
+
+        .icon {
+            font-size: 1.9em;
+        }
+
+        .total {
+            display: flex;
+            opacity: 0.55;
+            font-size: 0.8em;
+            font-weight: 500;
+            gap: 0.15em;
+
+            .divide {
+                opacity: 0.55;
+                font-size: 0.75em;
+            }
+        }
+    }
+
+    &.theme {
+        &--primary {
+            .score, .icon {
+                color: rgb(var(--primary));
+            }
+        }
+
+        &--warn {
+            .score, .icon {
+                color: tomato;
+            }
+        }
+    }
+}

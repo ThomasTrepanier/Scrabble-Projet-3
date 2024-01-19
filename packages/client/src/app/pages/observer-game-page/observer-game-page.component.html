@@ -1,0 +1,27 @@
+<div class='game-page'>
+    <app-game-board-wrapper class='game-page__board' [isObserver]="true" [canInteract]="false"></app-game-board-wrapper>
+    <div class='game-page__info'>
+        <app-game-observers-players (playerClick)='changeObservingPlayer($event)'
+            [observedPlayerId]='getObservingPlayerId()'></app-game-observers-players>
+
+        <div class='game-page__info__stats'>
+            <app-game-tiles-left></app-game-tiles-left>
+            <app-game-timer></app-game-timer>
+        </div>
+
+        <app-communication-box></app-communication-box>
+    </div>
+    <app-tile-rack class='game-page__tile-rack' [isObserver]="true"></app-tile-rack>
+    <mat-card class='game-page__actions'>
+        <button class='game-page__actions__button game-page__actions__button--quit' mat-flat-button
+            (click)="handleQuitButtonClick()" color="warn" matTooltip="Quitter" matTooltipPosition='above'>
+            <app-icon icon='door-open' styling="solid"></app-icon>
+        </button>
+        <div [matTooltip]="isGameOver ? 'Impossible de remplacer un joueur lorsque la partie est terminée' : isObservingVirtualPlayer() ? 'Remplacer un joueur virtuel' : 'Il est uniquement possible de remplacer un joueur virtuel'">
+            <button class='game-page__actions__button game-page__actions__button--replace' mat-flat-button
+                (click)="handleReplaceButtonClick()" color="warn" [disabled]="!isObservingVirtualPlayer() || isGameOver" color="primary">
+                <app-icon icon='exchange' styling="solid"></app-icon>
+            </button>
+        </div>
+    </mat-card>
+</div>

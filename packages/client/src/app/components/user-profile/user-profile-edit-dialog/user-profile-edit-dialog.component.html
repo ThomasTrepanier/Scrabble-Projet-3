@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="user-profile-edit-dialog">
+    <mat-form-field appearance="outline">
+        <mat-label><app-icon icon="user"></app-icon> Pseudonyme</mat-label>
+        <input matInput id="username" type="text" [formControl]="username" autocomplete="off" required />
+        <mat-error *ngIf="username.invalid">{{getUsernameError()}}</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <app-avatar-selector [control]='avatarField'></app-avatar-selector>
+
+    <br><br><br>
+
+    <div class="buttons">
+        <button mat-flat-button mat-dialog-close>Fermer</button>
+        <button mat-flat-button color="primary" [disabled]="isFormInvalid()" type="submit">Enregistrer</button>
+    </div>
+</form>

@@ -1,0 +1,90 @@
+@import '../../../style/variables.scss';
+
+$board-size: 530px;
+
+#content {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 24px;
+
+    .puzzle-score {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 24px;
+
+        p {
+            margin: 0;
+        }
+
+        .title {
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .puzzle-message {
+            font-size: 1.7em;
+            font-weight: 500;
+        }
+
+        .help {
+            opacity: 0.55;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+    }
+
+    .placement-slide {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        justify-items: center;
+        gap: 12px;
+
+        .puzzle-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+
+            .slide-title {
+                font-size: 1.5em;
+                font-weight: 500;
+                margin: 0;
+            }
+
+            .slide-points {
+                margin: 0;
+                background-color: rgb(var(--primary));
+                padding: 4px 8px;
+                border-radius: 4px;
+                color: white;
+                font-weight: 500;
+            }
+        }
+
+
+
+        .board-container {
+            display: flex;
+            height: $board-size;
+            width: $board-size;
+
+            app-board {
+                width: $board-size;
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+}

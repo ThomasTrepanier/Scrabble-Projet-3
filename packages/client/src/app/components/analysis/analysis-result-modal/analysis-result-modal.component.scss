@@ -1,0 +1,203 @@
+@import '../../../style/variables.scss';
+
+$board-size: 530px;
+$spacing: 8px;
+$margin: 24px;
+$animation-duration: 0.25s;
+$rack-padding: 12px;
+$rack-border: 2px;
+$tile-size: 34px;
+$rack-size: $tile-size + $rack-padding * 4 + $rack-border * 2;
+$side-size: 300px;
+
+::ng-deep mat-dialog-container {
+    max-height: calc(100% - 24px);
+}
+#content {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+
+    .analysis-overview {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 950px;
+        min-height: 500px;
+
+        p {
+            margin: 0;
+        }
+
+        .title {
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .analysis-message {
+            font-size: 1.7em;
+            font-weight: 500;
+        }
+
+        .help {
+            opacity: 0.55;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+        .error-list {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            gap: 24px;
+
+            .error-container {
+                display: flex;
+                width: 100%;
+                justify-content: space-around;
+                align-items: center;
+                gap: 24px;
+                flex-direction: column;
+
+                .error-title {
+                    font-size: 1.2em;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    #tile-rack {
+        padding: $rack-padding;
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        justify-content: center;
+        gap: $spacing;
+        box-shadow: unset;
+
+        .tile-rack {
+            justify-content: center;
+            display: flex;
+            gap: $spacing;
+
+            .rack-tile-container {
+                position: relative;
+                box-sizing: border-box;
+
+                app-tile {
+                    display: block;
+                    height: $tile-size;
+                    width: $tile-size;
+                    font-size: 1.1em;
+                }
+
+                &:not(.cdk-drag-placeholder):hover {
+                    app-tile {
+                        z-index: 1;
+                        scale: 1.05;
+                        transition: ease-in-out scale 0.1s;
+                    }
+                }
+
+                &.hidden {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing;
+
+            button {
+                line-height: 1em;
+                flex-grow: 1;
+            }
+        }
+    }
+
+    #left {
+        background-color: rgb(var(--primary));
+        color: white;
+    }
+
+    .placement-slide {
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        justify-items: center;
+        gap: 12px;
+
+        .puzzle-score {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+
+            .slide-title {
+                font-size: 1.5em;
+                font-weight: 500;
+                margin: 0;
+            }
+
+            .slide-points {
+                margin: 0;
+                background-color: rgb(var(--primary));
+                padding: 4px 8px;
+                border-radius: 4px;
+                color: white;
+                font-weight: 500;
+            }
+        }
+
+
+
+        .board-container {
+            display: flex;
+            height: $board-size;
+            width: $board-size;
+
+            app-board {
+                width: $board-size;
+            }
+        }
+
+        .action-description {
+            display: flex;
+            height: $board-size;
+            width: $board-size;
+
+            font-weight: 700;
+            font-size: 2.5em;
+            line-height: 1.1em;
+            text-align: center;
+            opacity: 0.75;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+
+    mat-button-toggle-group {
+        width: 250px;
+         mat-button-toggle {
+            width: 50%;
+        }
+    }
+}

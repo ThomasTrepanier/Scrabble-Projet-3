@@ -1,0 +1,36 @@
+<div class='group-request'>
+    <h2 class='group-request__title' mat-dialog-title>{{getTitle()}}</h2>
+
+    <div class='group-request__creator'>
+        <img class='group-request__creator__avatar' [appSrc]="requestedGroup.user1.avatar" [square]="50" />
+        <div class='group-request__creator__name'>
+            <span>{{ requestedGroup.user1.username }}</span>
+        </div>
+    </div>
+
+    <div class='group-request__parameters'>
+        <div class='group-request__parameters__item'>
+            <app-icon icon="hourglass-half" size="sm"></app-icon>
+            <span>{{ roundTime }}</span>
+        </div>
+        <div class='group-request__parameters__item'>
+            <app-icon icon="robot" size="sm"></app-icon>
+            <span>{{ requestedGroup.virtualPlayerLevel }}</span>
+        </div>
+    </div>
+
+    <div class='group-request__spinner'>
+        <mat-spinner color='primary' [diameter]='50' *ngIf='state === "ready"'></mat-spinner>
+    </div>
+
+    <div class='group-request__buttons'>
+        <button mat-flat-button color="primary" (click)="closeDialog()" *ngIf="state === 'ready'">
+            <app-icon icon="check"></app-icon>
+            Annuler la requête
+        </button>
+        <button mat-flat-button color="primary" (click)="closeDialog()" *ngIf="state !== 'ready'">
+            <app-icon icon="times"></app-icon>
+            Retourner à la sélection de partie
+        </button>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+{
+    "watch": ["app"],
+    "ext": "ts",
+    "ignore": ["app/**/*.spec.ts"],
+    "exec": "npm run build && cp -r ./assets ./out/app/assets && node --inspect out/app/app/index.js"
+}

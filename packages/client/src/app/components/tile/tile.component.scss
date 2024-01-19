@@ -1,0 +1,76 @@
+@import '../../style/utils.scss';
+@import '../../style/variables.scss';
+
+$letter-offset: 1px;
+$text-color: rgb(80, 55, 10);
+
+.tile {
+    @include no-select;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-position: center !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    cursor: pointer;
+
+    p {
+        margin: 0;
+        position: absolute;
+        line-height: 1em;
+    }
+    p.letter {
+        top: calc(50%);
+        left: calc(50%);
+        transform: translate(-50%, -50%);
+        font-size: 1.4em;
+        font-weight: 600;
+        color: $text-color;
+    }
+    &:not(.value-hidden) p.letter {
+        top: calc(50% - #{$letter-offset});
+        left: calc(50% - #{$letter-offset});
+    }
+    p.value {
+        bottom: 3px;
+        right: 4px;
+        color: $text-color;
+        font-size: 0.7em;
+        font-weight: 700;
+    }
+
+    &.hide-value {
+        p.letter {
+            top: 50%;
+            left: 50%;
+        }
+
+        p.value {
+            display: none;
+            visibility: hidden;
+        }
+    }
+    &.blank p {
+        color: tomato !important;
+    }
+
+    &:not(.applied) {
+        filter: hue-rotate(50deg);
+    }
+
+    &.newly-placed {
+        @keyframes flash {
+            0% { transform: scale(1); }
+            60% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        filter: brightness(0.875);
+        animation-name: flash;
+        animation-duration: 0.5s;
+    }
+
+    &.opacity {
+        opacity: 0.5;
+    }
+}

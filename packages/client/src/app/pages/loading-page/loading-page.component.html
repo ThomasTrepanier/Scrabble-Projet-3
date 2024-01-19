@@ -1,0 +1,10 @@
+<div class="loading-page" [ngClass]="{ error: isError, 'is-trying': isTrying, 'is-loading': isLoading }">
+    <mat-card>
+        <app-tile [tile]="{ letter: 'S', value: 0 }" [hideValue]="true"></app-tile>
+        
+        <div class="messages">
+            <p *ngIf="message" class="message">{{ message }}<ng-container *ngIf="isLoading"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></ng-container></p>
+            <p *ngIf="isTrying" class="trying-message">Tentative de reconnexion<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
+        </div>
+    </mat-card>
+</div>

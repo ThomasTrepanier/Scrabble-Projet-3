@@ -1,0 +1,18 @@
+<div class="content">
+  <h2>Paramètres sonores</h2>
+  <div class="not-title">
+    <div class="settings">
+      <label>
+        <mat-checkbox [(ngModel)]="isMusicEnabled" (ngModelChange)="saveMusic()" [ngModelOptions]="{ standalone: true }" color="primary">
+          Activer la musique</mat-checkbox>
+        </label>
+        <label>
+        <mat-checkbox [(ngModel)]="isSoundEnabled" (ngModelChange)="saveSound()" [ngModelOptions]="{ standalone: true }" color="primary">
+          Activer les effets sonores</mat-checkbox>
+      </label>
+    </div>
+    <div class="button-container">
+      <button mat-flat-button mat-dialog-close color="primary">Confirmer</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+@import '../../style/variables.scss';
+
+$img-size: 50px;
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 100px;
+    margin: 10px 0px;
+    padding: 8px;
+
+    .avatar {
+        &__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        &__img {
+            height: $img-size;
+            width: $img-size;
+            border-radius: 100px;
+            cursor: pointer;
+            border: solid 2px transparent;
+            opacity: 1;
+        }
+    }
+    
+    .button-container {
+        margin-left: auto;
+        display: flex;
+
+    }
+    
+    .accept-button, .reject-button {
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        position: relative;
+        margin-right: 10px;
+        border-radius: 50%;
+        background-color: #e6e6e6;
+
+        width: 40px;
+        height: 40px;
+        min-width: 0px;
+        app-icon {
+            height: $img-size;
+            width: $img-size;
+            border-radius: 100px;
+            cursor: pointer;
+            border: solid 2px transparent;
+            opacity: 1;
+            color: rgb(var(--primary));
+        }
+    }
+
+    .name {
+    font-size: 1.2em;
+    margin: 0 12px 8px 0;
+    text-align: center;
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    max-width: 200px; 
+    }
+
+    #observer-icon {
+        margin-bottom: 4px;
+    }
+}

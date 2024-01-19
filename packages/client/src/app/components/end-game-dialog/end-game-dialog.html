@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+    <div class="message">{{ message }}</div>
+    <div class="rating-container">
+        <ng-container>
+            <div> Votre nouveau classement Elo est de <b>{{((adjustedRating| number:'1.0-0') ?? 0)}}  </b>  </div> 
+        </ng-container>
+        <ng-container *ngIf="ratingVariation >= 0">
+            <div  id="positive-variation">(+{{((ratingVariation| number:'1.0-0') ?? 0)}})</div> 
+        </ng-container>
+        <ng-container *ngIf="ratingVariation < 0">
+            <div  id="negative-variation">({{((ratingVariation| number:'1.0-0') ?? 0)}})</div> 
+        </ng-container>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+        <button class="dialog-button" mat-flat-button (click)="handleButtonClick()">
+            Quitter la partie
+        </button>
+        <button class="dialog-button" mat-flat-button (click)="handleAnalysisButtonClick()">
+            Analyser la partie
+        </button>
+        <button class="dialog-button" mat-flat-button mat-dialog-close>
+            Rester sur cette page
+        </button>
+</mat-dialog-actions>

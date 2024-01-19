@@ -1,0 +1,19 @@
+<mat-dialog-content>
+    <div class="content">
+        <h2>Analyse de partie en cours</h2>
+        <div class="container">
+            <div class="loading-spinner">
+            <mat-spinner *ngIf="loading"></mat-spinner>
+            <app-icon *ngIf="!loading" icon="exclamation-triangle" size="5x"></app-icon>
+            <p>{{ message }}</p>
+            </div>
+        </div>
+        <div id="buttons-container">
+            <button mat-flat-button  (click)="closeDialog()">
+                <app-icon icon="chevron-left"></app-icon>
+                Retourner à la partie
+            </button> 
+        </div>
+    </div>
+</mat-dialog-content>
+      

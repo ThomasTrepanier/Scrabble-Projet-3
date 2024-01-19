@@ -1,0 +1,33 @@
+<app-page-header title="Classement Elo"></app-page-header>
+
+<div class="page">
+    <div class="page-content">
+        <mat-card>
+            <h3>Classement des meilleurs utilisateurs</h3>
+            <div class="search-results-header">
+                <div class="search-results-header-item">Rang</div>
+                <div class="search-results-header-item">Utilisateur</div>
+                <div class="search-results-header-item">Classement Elo</div>
+            </div>
+            <mat-divider></mat-divider>
+
+            <div *ngFor="let result of ((results | async) ?? []); let i=index" class="search-results">
+                <button class="search-result-item" (click)="reRoute(result.username)" [class.connected-user]="result.username === ownUsername">
+                    <div class="left-info">
+                        <app-icon  *ngIf="i === 0" icon="medal" styling="solid" class="gold"></app-icon>
+                        <app-icon  *ngIf="i === 1" icon="medal" styling="solid" class="silver"></app-icon>
+                        <app-icon  *ngIf="i === 2" icon="medal" styling="solid" class="bronze"></app-icon>
+                        <div *ngIf="i >= 3" id="ranking">
+                            {{i+1}}
+                        </div>
+                        <img [appSrc]="result.avatar" [square]="42">
+                    </div>
+                    <div class="player-info">
+                        <div class="info">{{result.username}}</div>
+                        <div class="info">{{result.rating | number:'1.0-0'}}</div>
+                    </div>
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</div>

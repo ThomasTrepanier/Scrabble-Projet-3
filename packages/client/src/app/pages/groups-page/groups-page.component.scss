@@ -1,0 +1,47 @@
+@import '../../style/utils.scss';
+@import '../../style/variables.scss';
+
+::ng-deep body {
+    background: #f3f3f3;
+}
+
+.groups-page {
+    min-height: 100%;
+    padding-top: 60px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+
+    &__empty {
+        align-self: center;
+        justify-self: center;
+        text-align: center;
+
+        &--message {
+            font-size: 1.15em;
+            font-weight: 500;
+            opacity: 0.55;
+        }
+
+        &--link a {
+            color: black;
+            opacity: 0.55;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 12px;
+        gap: 12px;
+
+        app-group-info {
+            max-width: 100%;
+        }
+    }
+}

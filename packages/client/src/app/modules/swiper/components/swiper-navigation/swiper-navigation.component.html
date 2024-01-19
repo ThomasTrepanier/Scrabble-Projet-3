@@ -1,0 +1,15 @@
+<div class='swiper-navigation'>
+    <button class='swiper-navigation__arrow swiper-navigation__arrow--previous' (click)='previous.emit()' [disabled]='!canPrevious'>
+        <app-icon icon='arrow-left' styling='solid'></app-icon>
+    </button>
+
+    <div class='swiper-navigation__items'>
+        <div *ngFor='let index of indexes' (click)='navigate.emit(index)' class='swiper-navigation__item' [ngClass]='{"swiper-navigation__item--active": current === index}'>
+            <div class='swiper-navigation__item__marker'></div>
+        </div>
+    </div>
+
+    <button class='swiper-navigation__arrow swiper-navigation__arrow--next' (click)='next.emit()' [disabled]='!canNext'>
+        <app-icon icon='arrow-right' styling='solid'></app-icon>
+    </button>
+</div>

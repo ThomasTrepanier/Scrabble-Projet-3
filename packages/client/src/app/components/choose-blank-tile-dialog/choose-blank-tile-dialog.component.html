@@ -1,0 +1,9 @@
+<div class="choose-blank-tile">
+    <p>Utilisez votre clavier pour choisir la lettre à utiliser</p>
+    <app-tile [tile]="(tile | async)!"></app-tile>
+    <div class="buttons">
+        <button mat-flat-button color="secondary" (click)="handleCancel()" mat-dialog-close>Annuler</button>
+        <button mat-flat-button color="primary" [disabled]="cannotConfirm | async" (click)="handleConfirm()" mat-dialog-close>Confirmer</button>
+    </div>
+    
+</div>

@@ -1,0 +1,123 @@
+<div id='content'>
+    <app-swiper navigationPosition='top'>
+        <app-swiper-slide class='analysis-overview'>
+            <p class='title'>Analyse de partie</p>
+            <div class="error-list">
+                <div class="error-container" matTooltip="Un tour où il était possible de marquer 25 points de plus que l'action que vous avez faite.">
+                    <p class='error-title'>Opportunités manquées</p>
+                    <app-analysis-overview
+                        [amount]='overview.minorMistakeCount'
+                        [total]='criticalMoments.length'
+                        [color]='colors.Yellow'
+                        [size]='175'
+                    ></app-analysis-overview>
+                </div>
+                <div class="error-container" matTooltip="Un tour où il était possible de marquer 50 points de plus que l'action que vous avez faite.">
+                    <p class='error-title'>Imprécisions</p>
+                    <app-analysis-overview
+                        [amount]='overview.mediumMistakeCount'
+                        [total]='criticalMoments.length'
+                        [color]='colors.Orange'
+                        [size]='175'
+                    ></app-analysis-overview>
+                </div>
+                <div class="error-container" matTooltip="Un tour où il était possible de marquer 100 points de plus que l'action que vous avez faite.">
+                    <p class='error-title'>Erreurs</p>
+                    <app-analysis-overview
+                        [amount]='overview.majorMistakeCount'
+                        [total]='criticalMoments.length'
+                        [color]='colors.Red'
+                        [size]='175'
+                    ></app-analysis-overview>       
+                </div>
+
+            </div>
+            <p class='analysis-message'>{{message}}</p>
+            <p class='help'>Utilisez les flèches pour voir les solutions possibles</p>
+        </app-swiper-slide>
+        <app-swiper-slide class='placement-slide result-placement' *ngFor='let criticalMoment of criticalMoments; let index = index'>
+            <mat-button-toggle-group name="actionShown" [(ngModel)]="criticalMoment.actionToShow">
+                <mat-button-toggle value="playedAction" id="toggle">Action faite</mat-button-toggle>
+                <mat-button-toggle value="bestAction" id="toggle">Action optimale</mat-button-toggle>
+              </mat-button-toggle-group>
+
+            <div *ngIf="criticalMoment.actionToShow=== actionToShow.PLAYED">
+                <div class='slide-info'>
+                    <p class='slide-points'>{{criticalMoment.playedPlacement.placement?.score ?? 0}} pts</p>
+                </div>
+    
+                <div class='board-container' *ngIf="criticalMoment.playedPlacement.placement">
+                    <app-board [grid]='criticalMoment.playedPlacement.grid!' [canInteract]='false' class='board'></app-board>
+                </div>
+                <div class='action-description' *ngIf="criticalMoment.actionType === actionTypes.EXCHANGE">
+                    <p> Vous avez échangé une ou plusieurs tuiles</p>
+                </div>
+                <div class='action-description'*ngIf="criticalMoment.actionType === actionTypes.PASS">
+                    <p> Vous avez passé votre tour</p>
+                </div>
+                <mat-card id="tile-rack">
+                    <ng-container>
+                        <div
+                            class="tile-rack"
+                        >
+                            <div class="rack-tile-container"
+                                *ngFor="let tile of (criticalMoment.playedPlacement.tileRack)" [ngClass]="{ selected: tile.isSelected }"
+                            >
+                                <app-tile [tile]="tile" [applied]="!tile.isUsed" class="rack-tile">
+                                    {{ tile.letter }}
+                                </app-tile>
+                            </div>
+                        </div>
+                    </ng-container>
+                </mat-card>  
+            </div>
+            <div *ngIf="criticalMoment.actionToShow=== actionToShow.BEST">
+                <div class='slide-info'>
+                    <p class='slide-points'>{{criticalMoment.bestPlacement.placement?.score ?? 0}} pts</p>
+                </div>
+    
+                <div class='board-container'>
+                    <app-board [grid]='criticalMoment.bestPlacement.grid!' [canInteract]='false' class='board'></app-board>
+                </div>
+                <mat-card id="tile-rack">
+                    <ng-container>
+                        <div
+                            class="tile-rack"
+                        >
+                            <div class="rack-tile-container"
+                                *ngFor="let tile of (criticalMoment.bestPlacement.tileRack )" [ngClass]="{ selected: tile.isSelected }"
+                            >
+                                <app-tile [tile]="tile" [applied]="!tile.isUsed" class="rack-tile">
+                                    {{ tile.letter }}
+                                </app-tile>
+                            </div>
+                        </div>
+                    </ng-container>
+                </mat-card>  
+            </div>
+        </app-swiper-slide>
+    </app-swiper>
+
+    <div class='buttons'>
+        <ng-container *ngIf="leftButton">
+            <button id="left" class="dialog-button" [style]="leftButton.style" mat-button mat-dialog-close *ngIf="leftButton.closeDialog" (click)="handleButtonClick(leftButton)">
+                <app-icon *ngIf="leftButton.icon" [icon]="leftButton.icon"></app-icon>
+                {{ leftButton.content }}
+            </button>
+            <button class="dialog-button" [style]="leftButton.style" mat-button *ngIf="!leftButton.closeDialog" (click)="handleButtonClick(leftButton)">
+                <app-icon *ngIf="leftButton.icon" [icon]="leftButton.icon"></app-icon>
+                {{ leftButton.content }}
+            </button>
+        </ng-container>
+        <ng-container *ngIf="rightButton">
+            <button id="right"  class="dialog-button" [style]="rightButton.style" mat-button mat-dialog-close *ngIf="rightButton.closeDialog" (click)="handleButtonClick(rightButton)">
+                <app-icon *ngIf="rightButton.icon" [icon]="rightButton.icon"></app-icon>
+                {{ rightButton.content }}
+            </button>
+            <button class="dialog-button" [style]="rightButton.style" mat-button *ngIf="!rightButton.closeDialog" (click)="handleButtonClick(rightButton)">
+                <app-icon *ngIf="rightButton.icon" [icon]="rightButton.icon"></app-icon>
+                {{ rightButton.content }}
+            </button>
+        </ng-container>
+    </div>
+</div>

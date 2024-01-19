@@ -1,0 +1,60 @@
+<!-- <div matSort>
+    <div class="filter-container">
+        <button mat-flat-button color="primary" (click)="askResetDictionaries()" [disabled]="state !== 'ready'">
+            Réinitialiser
+            <app-icon class="icon" icon="history"></app-icon>
+        </button>
+        <button mat-flat-button color="primary" (click)="uploadDictionary()">
+            Ajouter un dictionnaire
+            <app-icon class="icon" icon="plus-circle" styling="solid" size="lg"></app-icon>
+        </button>
+     </div>
+
+    <mat-divider></mat-divider>
+
+    <ng-container [ngSwitch]="state">
+        <ng-container *ngSwitchCase="'ready'">
+            <table mat-table [dataSource]="dataSource">
+        
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{columns.title}} </th>
+                    <td mat-cell class="left-cell" *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+       
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef> {{columns.description}} </th>
+                    <td mat-cell class="left-cell" *matCellDef="let element"> {{element.description}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> {{columns.actions}} </th>
+                    <td mat-cell class="right-cell" *matCellDef="let element"> 
+                        <button mat-mini-fab class="mat-elevation-z0 spaced-button" color = "primary" (click)="modifyDictionary(element)"[disabled] = "element.isDefault">
+                            <app-icon matTooltip="Vous ne pouvez pas modifier le dictionnaire par défaut." [matTooltipDisabled]="!element.isDefault" icon="pencil">
+                            </app-icon>
+                        </button>
+                        <button mat-mini-fab class="mat-elevation-z0 spaced-button" color = "primary" (click)="downloadDictionary(element.id)">
+                            <app-icon icon="download"></app-icon>
+                        </button>
+                        <button mat-mini-fab class="mat-elevation-z0 spaced-button" color = "primary" (click)="deleteDictionary(element)" [disabled] = "element.isDefault">
+                            <app-icon matTooltip="Vous ne pouvez pas supprimer le dictionnaire par défaut." [matTooltipDisabled]="!element.isDefault" icon="trash-alt">
+                            </app-icon>
+                        </button> 
+                    </td>
+                </ng-container> 
+        
+                <tr mat-header-row *matHeaderRowDef="getDisplayedColumns()"></tr>
+                <tr mat-row *matRowDef="let row; columns: getDisplayedColumns();"></tr>
+            </table>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'loading'">
+            <div class="loading-container">
+                <mat-spinner></mat-spinner>
+                <p>Chargement des dictionnaires...</p>
+            </div>
+        </ng-container>
+    </ng-container>
+    <mat-progress-bar *ngIf="!isWaitingForServerResponse" mode="indeterminate"></mat-progress-bar>
+    <mat-paginator [pageSizeOptions] = "[15, 25, 50]" [ngClass]="{ visible: state === 'ready' }" showFirstLastButtons></mat-paginator>
+</div> -->

@@ -1,0 +1,79 @@
+// @import '../../style/variables.scss';
+// @import '../../style/animations.scss';
+
+// #objective {
+//     border-radius: 10px;
+//     padding: 14px;
+
+//     & {
+//         margin-bottom: 8px;
+//     }
+
+//     .top, .bottom {
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//     }
+    
+//     .trophy-icon {
+//         position: relative;
+//         margin-right: 6px;
+//         color: rgb(214, 214, 214);
+//     }
+
+//     .help-icon {
+//         margin-left: 6px;
+//     }
+    
+//     .points {
+//         background: rgb(231, 231, 231);
+//         border-radius: 100px;
+//         padding: 2px 8px;
+//         text-align: center;
+//         margin-left: 12px;
+//         line-break: strict;
+//         white-space: nowrap;
+//     }
+
+//     .progress-text {
+//         margin-right: 6px;
+//         font-size: 0.95em;
+//         font-weight: 500;
+//         opacity: 0.75;
+//     }
+
+//     p {
+//         margin: 0;
+//     }
+
+//     &.completed {
+//         .trophy-icon {
+//             color: rgb(var(--primary));
+//         }
+
+//         .title {
+//             font-weight: 500;
+//         }
+
+//         .points {
+//             background: rgb(var(--primary));
+//             color: white;
+//         }
+//     }
+
+//     &.completed-by-opponent {
+//         opacity: 0.55;
+
+//         .trophy-icon:after {
+//             content: '';
+//             position: absolute;
+//             height: 110%;
+//             width: 2px;
+//             background: tomato;
+//             top: 50%;
+//             left: 50%;
+//             transform: translate(-50%, -50%) rotate(-45deg);
+//             border: solid 1px white;
+//         }
+//     }
+// }

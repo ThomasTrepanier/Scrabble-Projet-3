@@ -1,0 +1,23 @@
+@import '../../style/variables.scss';
+
+.header-btn {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(var(--primary));
+    transition: ease-in background-color 0.05s, ease-in scale 0.05s;
+    padding: 6px 8px;
+    border-radius: 3px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: rgba(var(--primary), 0.025);
+        transition: ease-in background-color 0.1s;
+    }
+    
+    &:active {
+        scale: 0.95;
+        transition: ease-in scale 0.1s;
+    }
+}

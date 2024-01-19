@@ -1,0 +1,293 @@
+@import '../../style/utils.scss';
+@import '../../style/variables.scss';
+
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left-container {
+        display: flex;
+        flex-direction: row;
+
+        .player-container {
+            $img-size: 70px;
+            display: grid;
+            grid-template-columns: repeat(4, 110px);
+            align-items: center;
+            gap: 12px;
+
+            .player {
+                display: grid;
+                grid-template-rows: repeat(2, auto);
+                gap: 12px;
+
+                .name {
+                    font-size: 1.2em;
+                    margin: 0;
+                    text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+              }
+
+            .empty::before {
+                content: 'JV';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: $img-size;
+                height: $img-size;
+                background-color: #eee;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                color: #000;
+                opacity: 1;
+            }
+
+            .avatar {
+                &__container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: $img-size;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    position: relative;
+                }
+
+                &__img {
+                    height: $img-size;
+                    width: $img-size;
+                    border-radius: 100px;
+                    cursor: pointer;
+                    border: solid 2px transparent;
+                    opacity: 1;
+                }
+            }
+        }
+
+        mat-divider {
+            border-right: 1px solid #eee;
+            height: 110px;
+            margin: 0 8px;
+            padding: 0;
+          }
+
+
+        .info-container {
+            border-radius: 5px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .chip-list {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+              width: 100%;
+            }
+
+            .chip {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background-color: #eee;
+              border-radius: 10px;
+              padding: 10px 10px;
+              font-size: 14px;
+              color: #333;
+              width: 100px;
+
+              app-icon {
+                  margin-right: 8px;
+                }
+            }
+          }
+    }
+
+    .observer-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+
+      .observer {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        border-radius: 10px;
+        font-size: 25px;
+        color: #333;
+        width: 100%;
+        margin-right: 25px;
+
+        app-icon {
+            margin-right: 8px;
+            font-size: 15px;
+          }
+
+
+      }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100%;
+
+        button {
+            height: 60px;
+            line-height: 0px;
+            margin: 0 10px;
+        }
+
+        #observe-button {
+            width: 60px;
+        }
+
+        #join-button {
+            width: 100px;
+        }
+        #visibility {
+            margin-right: 15px;
+        }
+    }
+}
+
+.group-info {
+    display: flex;
+    gap: 36px;
+
+    & * {
+        @include no-select;
+    }
+
+    &__players {
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        gap: 12px;
+        align-content: center;
+    }
+
+    &__player {
+        width: 110px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        justify-items: center;
+
+        &__avatar {
+            height: 70px;
+            width: 70px;
+            background-color: #eee;
+            border-radius: 50%;
+
+            &--empty {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.3em;
+                font-weight: 500;
+                opacity: 0.55;
+            }
+        }
+
+        &__name {
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+    }
+
+    &__chips {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        align-content: center;
+        gap: 6px;
+    }
+
+    &__chip {
+        display: grid;
+        grid-template-columns: auto 70px;
+        background-color: #eee;
+        padding: 6px 12px;
+        border-radius: 4px;
+        gap: 6px;
+        font-size: 0.9em;
+
+        app-icon {
+            width: 1.1em;
+            text-align: center;
+        }
+    }
+
+    &__buttons {
+        display: grid;
+        grid-template-columns: 80px;
+        align-content: center;
+        gap: 6px;
+    }
+
+    &__button {
+        &--play {
+            height: 3em;
+            font-size: 1.5em;
+        }
+    }
+
+    @media (max-width: 950px) {
+        &__players {
+            grid-template-columns: repeat(2, auto);
+        }
+
+        &__player {
+            width: 150px;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: center;
+
+            &__avatar {
+                height: 35px;
+                width: 35px;
+
+                &--empty {
+                    font-size: 0.9em;
+                }
+            }
+
+            &__name {
+                text-align: start;
+            }
+        }
+    }
+
+    @media (max-width: 800px) {
+        &__chips {
+            grid-template-columns: repeat(1, auto);
+        }
+
+        &__chip {
+            padding: 4px 8px;
+            font-size: 0.85em;
+            grid-template-columns: auto 55px;
+        }
+    }
+
+    @media (max-width: 675px) {
+        &__players {
+            grid-template-columns: repeat(1, auto);
+        }
+    }
+}

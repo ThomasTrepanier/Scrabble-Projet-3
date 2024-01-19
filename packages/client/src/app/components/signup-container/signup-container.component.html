@@ -1,0 +1,93 @@
+<div class="signup-container">
+    <mat-card>
+        <div class="header">
+            <h2>Créer un compte</h2>
+        </div>
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" [formGroup]="signupForm">
+                <mat-label><app-icon icon="envelope"></app-icon> Courriel</mat-label>
+                <input matInput id="email" type="email" formControlName="email" autocomplete="off" (blur)="handleEmailLoseFocus()" />
+            </mat-form-field>
+            <p class="field-error margin-top" *ngIf="isEmailTaken">Ce courriel est déjà utilisé</p>
+            <p
+                class="field-error margin-top"
+                *ngIf="!isEmailTaken && signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)"
+            >
+                Veuillez entrer un courriel valide
+            </p>
+
+            <mat-form-field
+                appearance="outline"
+                [formGroup]="signupForm"
+                matTooltip="Votre nom doit être entre 1 et 20 caractères sans caractères spéciaux"
+                matTooltipPosition="above"
+            >
+                <mat-label><app-icon icon="user"></app-icon> Pseudonyme</mat-label>
+                <input matInput id="username" type="text" formControlName="username" autocomplete="off" (blur)="handleUsernameLoseFocus()" />
+            </mat-form-field>
+            <p class="field-error margin-top" *ngIf="isUsernameTaken">Ce pseudonyme est déjà utilisé</p>
+            <p
+            class="field-error margin-top"
+            *ngIf="!isUsernameTaken && signupForm.get('username')?.invalid && (signupForm.get('username')?.dirty || signupForm.get('username')?.touched)"
+        >
+            Veuillez entrer un pseudonyme valide
+        </p>
+
+            <mat-form-field
+                appearance="outline"
+                [formGroup]="signupForm"
+                matTooltip="Au moins 8 caractères comprenant au moins 1 lettre minuscule, 1 lettre majuscule, 1 chiffre et 1 symbole avec une taille maximale de 50 caractères"
+                matTooltipPosition="above"
+            >
+                <mat-label><app-icon icon="lock"></app-icon> Mot de passe</mat-label>
+                <!-- <input matInput id="password" [type]="arePasswordsShown ? 'text' : 'password'"  formControlName="password" autocomplete="off" /> -->
+                <input matInput id="password" [type]="arePasswordsShown ? 'text' : 'password'" (blur)="handlePasswordLoseFocus()" formControlName="password" autocomplete="off" />
+            </mat-form-field>
+
+            <mat-form-field
+                appearance="outline"
+                [formGroup]="signupForm"
+                matTooltip="Le mot de passe entré doit être le même que celui ci-dessus"
+                matTooltipPosition="above"
+                [matTooltipDisabled]="!signupForm.getError('mismatch')"
+            >
+                <mat-label><app-icon icon="lock"></app-icon> Confirmer </mat-label>
+                <input
+                    matInput
+                    id="confirmPassword"
+                    [type]="arePasswordsShown ? 'text' : 'password'"
+                    formControlName="confirmPassword"
+                    autocomplete="off"
+                />
+            </mat-form-field>
+
+            <app-avatar-selector [control]='avatarControl'></app-avatar-selector>
+
+            <p
+                class="field-error margin-bottom"
+                *ngIf="avatarControl.invalid && (avatarControl.dirty || avatarControl.touched)"
+            >
+                Vous devez choisir un avatar!
+            </p>
+
+            <br />
+
+            <div class="buttons">
+                <mat-checkbox [(ngModel)]="arePasswordsShown" [ngModelOptions]="{ standalone: true }" color="primary">
+                    Afficher les mots de passe</mat-checkbox
+                >
+
+                <div
+                    class="button-container"
+                    matTooltip="Veuillez remplir tous les champs avec des données valides"
+                    [matTooltipDisabled]="isFormValid()"
+                    matTooltipPosition="above"
+                >
+                    <button mat-flat-button color="primary" type="submit" id="create-game-button" [disabled]="!isFormValid()" cdkFocusInitial>
+                        Créer son compte
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card>
+</div>

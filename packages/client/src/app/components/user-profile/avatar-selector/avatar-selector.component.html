@@ -1,0 +1,31 @@
+<ngx-uploadcare-widget
+    class='avatar-selector__uploadcare'
+    [images-only]="true"
+    [public-key]="apiKey"
+    [value]='control.value'
+    crop='512x512'
+    (on-change)='handleAvatarChange($event)'
+    (on-progress)='handleAvatarProgress()'
+>
+</ngx-uploadcare-widget>
+
+<div class='avatar-selector'>
+    <img class='avatar-selector__preview' [appSrc]='control.value' [square]='150' />
+
+    <div class='avatar-selector__preset-container'>
+        <button
+
+            class='avatar-selector__upload-button avatar-selector__upload-button--uploading'
+            (click)='openDialog()'
+            [disabled]='(widgetState |async) !== "ready"'
+            type='button'
+        >
+            <app-icon icon='file-upload' styling='solid'></app-icon>
+        </button>
+
+        <label *ngFor="let avatar of avatars">
+            <input type="radio" name="avatar" [value]="avatar" class="avatar-selector__preset__input" [formControl]='control' />
+            <img [appSrc]="avatar" class='avatar-selector__preset__image' [square]="50" />
+        </label>
+    </div>
+</div>

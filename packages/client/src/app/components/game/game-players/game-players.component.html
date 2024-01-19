@@ -1,0 +1,41 @@
+<div class='game-players'>
+    <mat-card
+        class='game-players__player game-players__player--main'
+        [ngClass]='{"game-players__player--active": localPlayer.isActive, "game-players__player--local-active": localPlayer.isPlaying}'
+    >
+        <div class='game-players__player__user'>
+            <img class='game-players__player__user__avatar' [appSrc]='localPlayer.player.publicUser.avatar' [square]='30'>
+            <span class='game-players__player__user__name'>{{localPlayer.player.publicUser.username}}</span>
+            <app-tile
+                [tile]='localPlayer.tilesLeftTile'
+                [hideValue]='true'
+                [matTooltip]='localPlayer.tilesLeft + " tuiles restantes"'
+                *ngIf='localPlayer.tilesLeft < 7'
+            ></app-tile>
+        </div>
+        <div class='game-players__player__points'>
+            <span class='game-players__player__points__value'>{{localPlayer.player.score}}</span>
+            <span class='game-players__player__points__label'>Points</span>
+        </div>
+    </mat-card>
+
+    <mat-card
+        *ngFor='let adversary of adversaries'
+        class='game-players__player'
+        [ngClass]='{"game-players__player--active": adversary.isActive}'
+    >
+        <div class='game-players__player__user'>
+            <img class='game-players__player__user__avatar' [appSrc]='adversary.player.publicUser.avatar' [square]='24'>
+            <span class='game-players__player__user__name'>{{adversary.player.publicUser.username}}</span>
+        </div>
+        <div class='game-players__player__points'>
+            <app-tile
+                [tile]='adversary.tilesLeftTile'
+                [hideValue]='true'
+                [matTooltip]='adversary.tilesLeft + " tuiles restantes"'
+                *ngIf='adversary.tilesLeft < 7'
+            ></app-tile>
+            <span class='game-players__player__points__value'>{{adversary.player.score}}</span>
+        </div>
+    </mat-card>
+</div>

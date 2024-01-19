@@ -1,0 +1,12 @@
+<mat-card class="user-profile-info">
+    <div class="user-info">
+        <img class="avatar" [appSrc]="avatar" [square]="110" />
+        <div class="user">
+            <h2 class="username">{{ username }}</h2>
+            <h3 class="email">{{ email }}</h3>
+        </div>
+    </div>
+    <div class="actions">
+        <ng-content select="[user-action]"></ng-content>
+    </div>
+</mat-card>

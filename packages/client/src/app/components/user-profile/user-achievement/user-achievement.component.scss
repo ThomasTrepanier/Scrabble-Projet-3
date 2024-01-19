@@ -1,0 +1,98 @@
+.achievement {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 16px;
+
+    &__image,
+    &__placeholder {
+        cursor: pointer;
+        transition: scale 0.1s ease-in;
+
+        &:hover {
+            scale: 1.05;
+        }
+
+        &:active {
+            scale: 0.95;
+        }
+    }
+
+    &__progress-container {
+        height: 10px;
+        width: 100%;
+        background-color: #eee;
+        border-radius: 3px;
+        position: relative;
+    }
+
+    &__progress {
+        background-color: rgb(var(--primary));
+        height: 100%;
+        border-radius: 3px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    &__progress-marks {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__progress-mark {
+        height: 100%;
+        width: 2px;
+        background-color: rgba(var(--primary), 0.1);
+    }
+
+    &__placeholder {
+        position: relative;
+        width: 125px;
+        height: 125px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 95.6%;
+            height: 95.6%;
+            border: solid 10px #eeeeee;
+            border-radius: 50%;
+            box-sizing: border-box;
+            translate: -50% 0;
+            z-index: 1;
+        }
+    }
+
+    &__info {
+        text-align: center;
+    }
+
+    &__value {
+        font-size: 2.3em;
+        font-weight: 600;
+        color: rgb(var(--primary));
+        line-height: 1em;
+        margin-bottom: 0.2em;
+    }
+
+    &__name {
+        font-weight: 500;
+        margin-bottom: 0.1em;
+    }
+
+    &__message {
+        font-size: 0.85em;
+        opacity: 0.55;
+
+        &__points {
+            font-weight: 500;
+        }
+    }
+}

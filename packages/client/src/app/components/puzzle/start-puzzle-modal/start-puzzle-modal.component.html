@@ -1,0 +1,23 @@
+<div id='content'>
+    <h1 class='title'>{{title}}</h1>
+
+    <div class='fields'>
+        <div class='field' *ngFor='let level of levels'>
+            <label [for]='"level-" + level.id'>
+                <input type='radio' name='level' [id]='"level-" + level.id' [value]='level.time' [formControl]='timeField' [disabled]='isDaily'>
+                <mat-card class='field-button'>
+                    <p class='icons'><app-icon [icon]='icon' *ngFor='let icon of level.icons' styling='solid'></app-icon></p>
+                    <p class='name'>{{level.name}}</p>
+                    <p class='description'>{{level.description}}</p>
+                </mat-card>
+            </label>
+        </div>
+    </div>
+
+    <p *ngIf='isDaily' class='daily-puzzle-message'>Le temps pour le puzzle du jour est prédéfini</p>
+
+    <div class='buttons'>
+        <button mat-flat-button (click)='onCancel()'>Retour à l'acceuil</button>
+        <button mat-flat-button color='primary' (click)='onConfirm()'>Démarer le puzzle</button>
+    </div>
+</div>

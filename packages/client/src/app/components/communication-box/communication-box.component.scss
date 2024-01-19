@@ -1,0 +1,71 @@
+$s: 8px;
+$b: #e4e4e4;
+
+.communication-box {
+    height: 100%;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+form {
+    display: flex;
+    align-items: stretch;
+    border: solid 2px rgb(207, 207, 207);
+    padding: 4px;
+    border-radius: 4px;
+
+    .button-tooltip {
+        display: flex;
+        width: 100%;
+    }
+
+    input {
+        flex-grow: 1;
+        border: none;
+        margin-right: 6px;
+        font-size: inherit;
+        font-family: inherit;
+        outline: none;
+    }
+
+    mat-hint {
+        font-size: 75%;
+        margin-right: 0;
+        color: #f3f3f3;
+        display: flex;
+        margin-top: -1px;
+    }
+
+    app-icon {
+        margin-top: 0.3em;
+        font-size: large;
+    }
+
+    ::ng-deep .mat-flat-button {
+        line-height: 20px;
+        padding: 0;
+    }
+    .mat-hint-wrapper {
+        height: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        text-align: center;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+    }
+
+    .isInvalid {
+        color: black;
+    }
+}
+
+p.message.isClickable {
+    ::ng-deep code {
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

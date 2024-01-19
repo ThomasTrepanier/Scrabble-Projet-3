@@ -1,0 +1,28 @@
+.choose-blank-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    gap: 24px;
+
+    p {
+        margin: 0;
+        font-size: 0.9em;
+        font-weight: 600;
+        opacity: 0.55;
+    }
+
+    app-tile {
+        height: 120px;
+        width: 120px;
+        font-size: 3.5em;
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+}

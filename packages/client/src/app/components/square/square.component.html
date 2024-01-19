@@ -1,0 +1,69 @@
+<div
+    [class]="'square' + (squareView.square.tile ? ' has-tile ' : ' no-tile ') + getOrientationClass()"
+    [ngClass]="{ cursor: isCursor, 'can-drop': canInteract }"
+    [attr.column]="squareView.square.position.column"
+    [attr.row]="squareView.square.position.row"
+>
+    <!-- <div class="inner"> -->
+        <div class="content" [ngStyle]="{ 'background-color': squareView.getColor() }">
+            <ng-container *ngIf="squareView.square.tile; else noTile">
+                <div class="full-size" cdkDropList [cdkDropListEnterPredicate]="canDropTile(squareView)" *ngIf="(canMove() | async) && canInteract; else noMove">
+                    <div
+                        class="tile-container full-size canMove"
+                        (cdkDragMoved)="dragAndDropService.onBoardTileMove($event)"
+                        (cdkDragDropped)="dragAndDropService.onBoardTileDrop(squareView.square.tile, squareView.square.position)"
+                        cdkDrag
+                    >
+                        <app-tile
+                            [tile]="squareView.square.tile"
+                            [ngStyle]="{ fontSize: tileFontSize + 'em' }"
+                            [applied]="squareView.applied"
+                            [newlyPlaced]="squareView.newlyPlaced"
+                            [halfOppacity]="squareView.halfOppacity"
+                        ></app-tile>
+                    </div>
+
+                    <ng-template #noMove>
+                        <div class="tile-container full-size">
+                            <app-tile
+                                [tile]="squareView.square.tile"
+                                [ngStyle]="{ fontSize: tileFontSize + 'em' }"
+                                [applied]="squareView.applied"
+                                [newlyPlaced]="squareView.newlyPlaced"
+                                [halfOppacity]="squareView.halfOppacity"
+                            ></app-tile>
+                        </div>
+                    </ng-template>
+                </div>
+
+                <ng-template #noMove>
+                    <div class="full-size">
+                        <div class="tile-container full-size">
+                            <app-tile
+                                [tile]="squareView.square.tile"
+                                [ngStyle]="{ fontSize: tileFontSize + 'em' }"
+                                [applied]="squareView.applied"
+                                [newlyPlaced]="squareView.newlyPlaced"
+                                [halfOppacity]="squareView.halfOppacity"
+                            ></app-tile>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+            <ng-template #noTile>
+                <ng-container *ngIf="squareView.square.isCenter; else notCenter">
+                    <p class="star">
+                        <app-icon icon="star" styling="solid"></app-icon>
+                    </p>
+                </ng-container>
+                <ng-template #notCenter>
+                    <div class="multiplier" *ngIf="multiplierType">
+                        <p class="type">{{ multiplierType }}</p>
+                        <p class="value">× {{ multiplierValue }}</p>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </div>
+    <!-- </div> -->
+
+</div>

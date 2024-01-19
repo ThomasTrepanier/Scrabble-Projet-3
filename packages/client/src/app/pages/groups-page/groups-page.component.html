@@ -1,0 +1,16 @@
+<app-page-header title="Sélection de partie">
+    <app-header-btn link="/game-creation" header-button>Créer une partie</app-header-btn>
+</app-page-header>
+
+<div class='groups-page'>
+    <div class='groups-page__empty' *ngIf='groups.length === 0'>
+        <p class='groups-page__empty--message'>Aucune partie à rejoindre.</p>
+        <p class='groups-page__empty--link'><a routerLink='/game-creation'>Créez-en une !</a></p>
+    </div>
+
+    <div class='groups-page__grid' *ngIf='groups.length > 0'>
+        <ng-container *ngFor="let group of groups">
+            <app-group-info [group]="group" (joinGroupId)="joinGroup($event)"></app-group-info>
+        </ng-container>
+    </div>
+</div>

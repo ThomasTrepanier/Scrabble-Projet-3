@@ -1,0 +1,44 @@
+<!-- <div class="form-group">
+    <mat-form-field
+        appearance="outline"
+        [formGroup]="formParameters"
+        matTooltip="Votre nom doit être entre 2 et 20 caractères sans caractères spéciaux"
+        matTooltipPosition="above"
+    >
+        <mat-label><app-icon icon="user"></app-icon> Choisissez votre nom de joueur</mat-label>
+        <input
+            matInput
+            id="playerNameValidator"
+            type="text"
+            formControlName="inputName"
+            autocomplete="off"
+            (ngModelChange)="onChange()"
+            (valueChanges)="onChange()"
+        />
+    </mat-form-field>
+    <span
+        class="alert-group"
+        *ngIf="formParameters.get('inputName')?.invalid && (formParameters.get('inputName')?.dirty || formParameters.get('inputName')?.touched)"
+    >
+        <mat-error class="alert" *ngIf="formParameters.get('inputName')?.errors?.['required']"> {{ errorNameRequired }} </mat-error>
+        <mat-error class="alert" *ngIf="formParameters.get('inputName')?.errors?.['minlength']">
+            {{ errorNameTooShort }}
+        </mat-error>
+        <mat-error class="alert" *ngIf="formParameters.get('inputName')?.errors?.['maxlength']">
+            {{ errorNameTooLong }}
+        </mat-error>
+        <mat-error
+            class="alert"
+            *ngIf="
+                formParameters.get('inputName')?.errors?.pattern &&
+                !formParameters.get('inputName')?.errors?.maxlength &&
+                !formParameters.get('inputName')?.errors?.minlength
+            "
+        >
+            {{ errorNameNoMatchRegex }}
+        </mat-error>
+    </span>
+    <mat-error class="alert" *ngIf="mustVerifyVirtualPlayerName && formParameters.get('inputName')?.value === virtualPlayerName">
+        {{ errorSameNameAsVirtualPlayer }}
+    </mat-error>
+</div> -->

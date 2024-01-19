@@ -1,0 +1,146 @@
+@import '../../style/animations.scss';
+@import '../../style/icon.scss';
+@import '../../style/variables.scss';
+
+$tile-size: 46px;
+$animation-duration: 0.25s;
+$tiles-padding: 4px;
+
+#rack-grid {
+    height: 100%;
+
+    mat-card {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        height: 100%;
+        box-sizing: border-box;
+        gap: 12px;
+        padding: ($tiles-padding * 2) 16px;
+
+        .rack-card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            border-radius: 8px;
+            transition: ease-in-out gap $animation-duration;
+
+            .rack-tile-container {
+                width: $tile-size;
+                position: relative;
+                box-sizing: border-box;
+                transition: ease-in-out width $animation-duration;
+
+                app-tile {
+                    display: block;
+                    height: $tile-size;
+                    width: $tile-size;
+                    position: relative;
+                    transition: ease-in-out scale 0.1s;
+                }
+
+                &:not(.cdk-drag-placeholder):hover {
+                    app-tile {
+                        z-index: 1;
+                        scale: 1.05;
+                        transition: ease-in-out scale 0.1s;
+                    }
+                }
+
+                &.hidden {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+
+                &.cdk-drag-placeholder {
+                    border-radius: 6px;
+                    border: dashed 2px rgb(227, 227, 227);
+
+                    app-tile {
+                        opacity: 0;
+                    }
+                }
+
+                &.cdk-drag-animating {
+                    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+                }
+            }
+
+            &.cdk-drop-list-dragging .rack-tile-container {
+                transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+            }
+
+            &.selection-exchange .rack-tile-container.selected app-tile {
+                animation: wiggle 0.25s infinite;
+                filter: hue-rotate(50deg);
+            }
+
+            &.selection-move .rack-tile-container.selected {
+                z-index: 2;
+
+                app-tile {
+                    transform: translateY(-20%);
+                    filter: hue-rotate(175deg);
+                    animation: orbit linear 1s infinite;
+                    z-index: 2;
+
+                    &:hover {
+                        z-index: 2;
+                    }
+
+                    &:after,
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        font-size: 1.2em;
+                        color: rgb(218, 183, 126);
+                        text-shadow: 0px 1px 6px rgba(0, 0, 0, 0.15);
+                        top: 50%;
+                        z-index: 3;
+                    }
+
+                    &:before {
+                        content: "◀";
+                        left: 0;
+                        transform: translate(-100%, -50%);
+                        margin-left: -6px;
+                    }
+
+                    &:after {
+                        content: "►";
+                        right: 0;
+                        transform: translate(100%, -50%);
+                        margin-right: -6px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.rack-tile-container.cdk-drag-preview {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 0.91em;
+}
+
+.tile-rack {
+    &--hovered {
+        border-color: rgb(var(--primary)) !important;
+        background-color: rgba(var(--primary), 0.1);
+    }
+}
+
+.tile-rack-actions {
+    display: flex;
+    gap: 6px;
+    padding: (16px - $tiles-padding * 2) 0;
+
+    &__button {
+        height: 100%;
+        width: 55px;
+        min-width: 0;
+        font-size: 1.15em;
+    }
+}

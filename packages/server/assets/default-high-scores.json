@@ -1,0 +1,14 @@
+{
+    "highScores": [
+        { "gameType": "Classique", "score": 23, "names": ["Alex Térieur"] },
+        { "gameType": "Classique", "score": 9, "names": ["Ariane Petite"] },
+        { "gameType": "Classique", "score": 13, "names": ["Serpent Severe"] },
+        { "gameType": "Classique", "score": 2, "names": ["Tanguy"] },
+        { "gameType": "Classique", "score": 10, "names": ["George Washington"] },
+        { "gameType": "LOG2990", "score": 38, "names": ["Vincenzo"] },
+        { "gameType": "LOG2990", "score": 12, "names": ["Elon Moutarde"] },
+        { "gameType": "LOG2990", "score": 28, "names": ["Geff Pezos"] },
+        { "gameType": "LOG2990", "score": 19, "names": ["Captain Bobette"] },
+        { "gameType": "LOG2990", "score": 41, "names": ["Gee Nette"] }
+    ]
+}

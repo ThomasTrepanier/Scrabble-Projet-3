@@ -1,0 +1,44 @@
+<div id='content'>
+    <app-swiper navigationPosition='top'>
+        <app-swiper-slide class='puzzle-score'>
+            <p class='title'>Puzzle {{parameters.level.name}}</p>
+            <app-puzzle-score
+                [score]='parameters.result.userPoints'
+                [total]='parameters.result.targetPlacement.score'
+                [icon]='icon'
+                [color]='color'
+                [size]='175'
+            ></app-puzzle-score>
+            <p class='puzzle-message'>{{message}}</p>
+            <p class='help'>Utilisez les flèches pour voir les solutions possibles</p>
+        </app-swiper-slide>
+
+        <app-swiper-slide class='placement-slide puzzle-placement' *ngIf='userPlacementGrid'>
+            <div class='slide-info'>
+                <p class='slide-title'>Votre placement</p>
+                <p class='slide-points' *ngIf='placementPoints >= 0'>{{placementPoints}} pts</p>
+                <p class='slide-points' *ngIf='placementPoints < 0'> 0 pts</p>
+            </div>
+
+            <div class='board-container'>
+                <app-board [grid]='userPlacementGrid' [canInteract]='false' class='board'></app-board>
+            </div>
+        </app-swiper-slide>
+
+        <app-swiper-slide class='placement-slide result-placement' *ngFor='let placement of resultPlacements; let index = index'>
+            <div class='slide-info'>
+                <p class='slide-title'>Solution {{index + 1}}</p>
+                <p class='slide-points'>{{placement.placement.score}} pts</p>
+            </div>
+
+            <div class='board-container'>
+                <app-board [grid]='placement.grid' [canInteract]='false' class='board'></app-board>
+            </div>
+        </app-swiper-slide>
+    </app-swiper>
+
+    <div class='buttons'>
+        <button mat-flat-button (click)='onCancel()'>Retour à l'accueil</button>
+        <button mat-flat-button color='primary' (click)='onContinue()' *ngIf='!parameters.hideContinueButton'>Puzzle suivant</button>
+    </div>
+</div>

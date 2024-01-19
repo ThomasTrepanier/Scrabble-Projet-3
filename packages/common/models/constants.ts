@@ -1,0 +1,1 @@
+export const DEFAULT_PLAYER_RATING = 1000;

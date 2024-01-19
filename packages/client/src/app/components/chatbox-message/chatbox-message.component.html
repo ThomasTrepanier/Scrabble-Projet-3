@@ -1,0 +1,55 @@
+<app-chatbox
+    [title]="title"
+    [icon]="getLastUsersAvatarUrl()[0] ?? ''"
+    [icon2]="getLastUsersAvatarUrl()[1] ?? ''"
+    [isPrimary]='isPrimary'
+    class="chatbox-message"
+>
+    <ng-container action-button>
+        <ng-content select="[action-button]"></ng-content>
+    </ng-container>
+
+    <div class="chatbox-message__content">
+        <div class="chatbox-message__messages">
+            <div class="chatbox-message__messages__container">
+                <div *ngFor="let messageGroup of getMessages()" [ngClass]="{'chatbox-message__group': true, 'chatbox-message__group--is-current-user': messageGroup.isCurrentUser, 'chatbox-message__group--is-other-user': !messageGroup.isCurrentUser}">
+                    <p class="chatbox-message__group__time" *ngIf="messageGroup.displayDate">{{messageGroup.date | date: timeFomat}}</p>
+                    <p class="chatbox-message__group__username">{{messageGroup.sender.username}}</p>
+                    <div class="chatbox-message__group__content">
+                        <img
+                            class="chatbox-message__group__avatar"
+                            [appSrc]="messageGroup.sender.avatar"
+                            [square]="20"
+                            *ngIf="!messageGroup.isCurrentUser"
+                        />
+                        <div class="chatbox-message__group__messages">
+                            <div *ngFor="let message of messageGroup.messages" class="chatbox-message__message__outer" [attr.tooltip]="(message.date | date: 'shortTime') ?? ''">
+                                <p
+                                    [ngClass]="{
+                                        'chatbox-message__message': true,
+                                        'chatbox-message__message--only-emoji': message.onlyEmoji
+                                    }"
+                                >{{message.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chatbox-message__input">
+            <form class="chatbox-message__input__form" [formGroup]="messageForm" (ngSubmit)="onMessageSubmit()" novalidate>
+                <input
+                    type="text"
+                    formControlName="message"
+                    class="chatbox-message__input__form__control"
+                    placeholder="Aa"
+                    [maxlength]="512"
+                    (keypress)="onKeyPress($event)"
+                >
+            </form>
+
+            <app-icon-button *ngIf="isInputEmpty" (click)="onEmojiClick('👍')" class="chatbox-message__input__button">👍</app-icon-button>
+            <app-icon-button *ngIf="!isInputEmpty" (click)="onMessageSubmit()" class="chatbox-message__input__button"><app-icon icon="paper-plane" styling="solid"></app-icon></app-icon-button>
+        </div>
+    </div>
+</app-chatbox>

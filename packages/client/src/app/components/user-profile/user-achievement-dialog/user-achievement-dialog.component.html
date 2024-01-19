@@ -1,0 +1,19 @@
+<div class='achievement-dialog'>
+    <h1 class='achievement-dialog__title'>{{achievement.achievement.name}}</h1>
+    <p class='achievement-dialog__description'>{{achievement.achievement.description}}</p>
+
+    <div class='achievement-dialog__levels'>
+        <div
+            *ngFor='let level of achievement.achievement.levels; let index = index'
+            class='achievement-dialog__level'
+            [ngClass]='{"achievement-dialog__level--completed": index <= (achievement.levelIndex ?? -1)}'
+        >
+            <img class='achievement-dialog__level__image' [appSrc]='level.image' [square]='100' />
+            <p class='achievement-dialog__level__value'>{{level.value}}</p>
+        </div>
+    </div>
+
+    <div class='achievement-dialog__buttons'>
+        <button mat-flat-button color='primary' (click)='ref.close()'>Ok</button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class='game-observers-players'>
+    <mat-card *ngFor='let player of players; let index = index' class='game-observers-players__player'
+        [ngClass]='{"game-observers-players__player--active": player.isActive, "game-observers-players__player--observed": observedPlayerId === player.player.id}'
+        (click)='playerClick.emit(index + 1)'>
+        <div class='game-observers-players__player__user'>
+            <img class=' game-observers-players__player__user__avatar' [appSrc]='player.player.publicUser.avatar'
+                [square]='24'>
+            <span class='game-observers-players__player__user__name'><app-icon *ngIf='observedPlayerId === player.player.id' icon='eye'></app-icon> {{player.player.publicUser.username}}</span>
+        </div>
+        <div class='game-observers-players__player__points'>
+            <app-tile [tile]='player.tilesLeftTile' [hideValue]='true'
+                [matTooltip]='player.tilesLeft + " tuiles restantes"' *ngIf='player.tilesLeft < 7'></app-tile>
+            <span class='game-observers-players__player__points__value'>{{player.player.score}}</span>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,102 @@
+@import '../../../style/variables';
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    width: 500px;
+
+    .title {
+        margin: 0;
+        text-align: center;
+        font-size: 1.7em;
+        font-weight: 600;
+    }
+
+    .fields {
+        display: flex;
+        gap: 12px;
+        justify-content: stretch;
+
+        .field {
+            flex-grow: 1;
+
+            input[type=radio] {
+                display: none;
+
+                &:checked + .field-button {
+                    background-color: rgba(var(--primary), 0.15);
+
+                    .icons {
+                        color: rgb(var(--primary));
+                    }
+                }
+
+                &:not(:disabled):checked + .field-button {
+                    &:hover {
+                        background-color: rgba(var(--primary), 0.15);
+                    }
+                }
+
+                &:not(:disabled) + .field-button {
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.015);
+                    }
+
+                    &:active {
+                        scale: 0.965;
+                    }
+                }
+
+                &:disabled + .field-button {
+                    opacity: 0.65;
+                }
+            }
+
+            .field-button {
+                display: flex;
+                gap: 6px;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+                transition: ease-in scale 0.1s;
+
+                .icons, .name, .description {
+                    margin: 0;
+                }
+
+                .icons {
+                    display: flex;
+                    font-size: 1.2em;
+                    gap: 4px;
+                }
+
+                .name {
+                    font-size: 1.1em;
+                    font-weight: 500;
+                }
+
+                .description {
+                    font-size: 0.85em;
+                    opacity: 0.55;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+
+    .daily-puzzle-message {
+        text-align: center;
+        font-weight: 500;
+        opacity: 0.55;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+    }
+}

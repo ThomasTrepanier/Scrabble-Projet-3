@@ -1,0 +1,37 @@
+<mat-card class="header">
+    <div class="content">
+        <div class="left">
+            <button *ngIf="!hideBackButton" class="back-btn" [routerLink]="buttonRoute">
+                <app-icon icon="arrow-left" styling="solid"></app-icon>
+                <img [appSrc]="(logo | async) ?? ''" [height]="22" header-title />
+            </button>
+        </div>
+
+        <div class="title">
+            {{ title }}
+            <ng-content select="[header-title]"></ng-content>
+        </div>
+
+        <div class="right">
+            <ng-content select="[header-button]"></ng-content>
+            <app-header-btn *ngIf="user | async" [matMenuTriggerFor]="userMenu">
+                <div class="user-container">
+                    <p class="username">{{ getUsername() | async }}</p>
+                    <img [appSrc]="(getAvatar() | async) ?? ''" [square]="32" class="avatar" alt="">
+                </div>
+            </app-header-btn>
+
+            <mat-menu #userMenu="matMenu">
+                <button class="menu-btn" mat-menu-item (click)="navigateToProfile()">
+                    <app-icon icon="user" style="width: 14px; margin-right: 12px"></app-icon> Mon profil
+                </button>
+                <button class="menu-btn" mat-menu-item (click)="openSoundSettings()">
+                    <app-icon icon="music" style="width: 14px; margin-right: 12px"></app-icon> Paramètres sonores
+                </button>
+                <button class="menu-btn" mat-menu-item (click)="signOut()">
+                    <app-icon icon="sign-out" style="width: 14px; margin-right: 12px"></app-icon> Se déconnecter
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-card>

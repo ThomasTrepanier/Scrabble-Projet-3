@@ -1,0 +1,57 @@
+@import '../../style/variables.scss';
+
+.group-request {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 400px;
+
+    &__creator {
+        display: grid;
+        width: 225px;
+        background-color: rgba(var(--primary), 0.15);
+        grid-template-columns: auto minmax(0, 1fr);
+        padding: 12px;
+        border-radius: 100px;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.25em;
+        font-weight: 500;
+        color: rgb(var(--primary));
+
+        &__avatar {
+            border-radius: 50%;
+            background-color: white;
+        }
+    }
+
+    &__parameters {
+        display: flex;
+        gap: 12px;
+        font-weight: 500;
+
+        &__item {
+            display: flex;
+            gap: 12px;
+            background-color: #eee;
+            padding: 6px 12px;
+            border-radius: 4px;
+            align-items: center;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        width: 100%;
+        gap: 12px;
+
+        button {
+            width: 100%;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

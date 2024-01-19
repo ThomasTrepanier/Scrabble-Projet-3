@@ -1,0 +1,111 @@
+<!--<mat-card class="content">-->
+<!--    <div class="left-container">-->
+<!--        <div class="player-container">-->
+<!--            <div class="player">-->
+<!--                <div class="avatar__container">-->
+<!--                    <img [appSrc]="group.user1.avatar" [square]="70" class="avatar__img" />-->
+<!--                </div>-->
+<!--                <p class="name">{{ group.user1.username }}</p>-->
+<!--            </div>-->
+<!--            <div class="player">-->
+<!--                <div class="avatar__container" [ngClass]="{ empty: group.user2 === undefined }">-->
+<!--                    <img *ngIf="group.user2 !== undefined" [appSrc]="group.user2.avatar" [square]="70" class="avatar__img" />-->
+<!--                </div>-->
+<!--                <p class="name">{{ group.user2?.username ?? "JV " + group.virtualPlayerLevel }}</p>-->
+<!--            </div>-->
+<!--            <div class="player">-->
+<!--                <div class="avatar__container" [ngClass]="{ empty: group.user3 === undefined }">-->
+<!--                    <img *ngIf="group.user3 !== undefined" [appSrc]=" group.user3.avatar" [square]="70" class="avatar__img" />-->
+<!--                </div>-->
+<!--                <p class="name">{{ group.user3?.username ?? "JV " + group.virtualPlayerLevel}}</p>-->
+<!--            </div>-->
+<!--            <div class="player">-->
+<!--                <div class="avatar__container" [ngClass]="{ empty: group.user4 === undefined }">-->
+<!--                    <img *ngIf="group.user4 !== undefined" [appSrc]=" group.user4.avatar" [square]="70" class="avatar__img" />-->
+<!--                </div>-->
+<!--                <p class="name">{{ group.user4?.username ?? "JV " + group.virtualPlayerLevel}}</p>-->
+<!--            </div>-->
+<!--    -->
+<!--        </div>-->
+<!--        <mat-divider vertical></mat-divider>-->
+<!--    -->
+<!--        <div class="info-container">-->
+<!--            <div class="chip-list">-->
+<!--                <div class="chip">-->
+<!--                    <app-icon icon="hourglass-half" size="lg"></app-icon> {{ roundTime.minutes }}:{{ roundTime.getTimerSecondsPadded() }}-->
+<!--                </div>-->
+<!--                <div class="chip">-->
+<!--                    <app-icon icon="user-robot" styling="solid" size="lg"></app-icon> {{ group.virtualPlayerLevel }}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--    <div class="observer-list">-->
+<!--        <div class="observer">-->
+<!--            <app-icon icon="eye" size="2x"></app-icon> {{ group.numberOfObservers }}-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="button-container">-->
+<!--        <app-icon *ngIf="group.gameVisibility === gameVisibilities.Public" id="visibility" icon="globe" size="3x"></app-icon>-->
+<!--        <app-icon *ngIf="group.gameVisibility === gameVisibilities.Private" id="visibility" styling="solid" icon="lock" size="3x"></app-icon>-->
+<!--        <app-icon *ngIf="group.gameVisibility === gameVisibilities.Protected" id="visibility" icon="shield" size="3x"></app-icon>-->
+
+<!--        <button mat-flat-button id="observe-button" color="primary" (click)="observeGroup()">-->
+<!--            <app-icon icon="eye" size="2x"></app-icon>-->
+<!--        </button>-->
+<!--        <button mat-flat-button id="join-button" color="primary" [disabled]="group.user2 !== undefined && group.user3 !== undefined && group.user4 !== undefined"  (click)="joinGroup()">-->
+<!--            <app-icon icon="play" styling="solid" size="2x"></app-icon>-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</mat-card>-->
+
+<mat-card class='group-info'>
+    <div class='group-info__players'>
+        <div class='group-info__player' [ngClass]='{"group-info__player--virtual": !user}' *ngFor='let user of users'>
+            <img *ngIf='user' [appSrc]='user.avatar' [square]='70' class='group-info__player__avatar' />
+            <div *ngIf='!user' class='group-info__player__avatar group-info__player__avatar--empty'>JV</div>
+
+            <p class='group-info__player__name'>{{ user?.username ?? "JV " + group.virtualPlayerLevel }}</p>
+        </div>
+    </div>
+
+<!--    <mat-divider vertical></mat-divider>-->
+
+    <div class='group-info__chips'>
+        <div class='group-info__chip'>
+            <app-icon icon="hourglass-half" styling='solid'></app-icon> {{ roundTime.minutes }}:{{ roundTime.getTimerSecondsPadded() }}
+        </div>
+        <div class='group-info__chip'>
+            <app-icon icon="user-robot" styling="solid"></app-icon> {{ group.virtualPlayerLevel }}
+        </div>
+        <div class='group-info__chip'>
+            <app-icon icon="eye" styling='solid'></app-icon> {{ group.numberOfObservers }}
+        </div>
+        <div class='group-info__chip'>
+            <ng-container *ngIf="group.gameVisibility === gameVisibilities.Public">
+                <app-icon icon="globe" styling='solid'></app-icon> Public
+            </ng-container>
+            <ng-container *ngIf="group.gameVisibility === gameVisibilities.Private">
+                <app-icon icon="lock" styling='solid'></app-icon> Privée
+            </ng-container>
+            <ng-container *ngIf="group.gameVisibility === gameVisibilities.Protected">
+                <app-icon icon="shield" styling='solid'></app-icon> Protégée
+            </ng-container>
+        </div>
+    </div>
+
+<!--    <mat-divider vertical></mat-divider>-->
+
+    <div class='group-info__buttons'>
+        <button mat-flat-button class='group-info__button group-info__button--play' color="primary" [disabled]="!canJoin()" (click)="joinGroup()" matTooltip='Rejoindre' [matTooltipShowDelay]='250'>
+            <app-icon icon="play" styling="solid"></app-icon>
+        </button>
+        <button mat-flat-button class='group-info__button group-info__button--observe' color="primary" (click)="observeGroup()" matTooltip='Observer' [matTooltipShowDelay]='250'>
+            <app-icon icon="eye"></app-icon>
+        </button>
+    </div>
+</mat-card>

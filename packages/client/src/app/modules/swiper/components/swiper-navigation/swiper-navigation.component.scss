@@ -1,0 +1,74 @@
+@import '../../../../style/variables.scss';
+
+.swiper-navigation {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+
+    &__arrow {
+        background: none;
+        border: none;
+        margin: 0;
+        padding: 4px 12px;
+        font-size: 1em;
+        border-radius: 2px;
+        transition: ease-in scale 0.1s;
+
+        &:not(:disabled) {
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(0,0,0,0.1);
+            }
+
+            &:active {
+                scale: 0.95;
+            }
+        }
+    }
+
+    &__items {
+        display: flex;
+        gap: 4px;
+        overflow-x: hidden;
+        justify-content: center;
+    }
+
+    &__item {
+        padding: 6px 4px;
+        flex-grow: 1;
+        max-width: 50px;
+
+        &__marker {
+            height: 6px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 2px;
+            transition: ease-in background 0.1s;
+        }
+
+        &--active {
+            .swiper-navigation__item__marker {
+                background-color: rgb(var(--primary));
+            }
+
+        }
+
+        &:not(&--active) {
+            cursor: pointer;
+
+            &:hover {
+                .swiper-navigation__item__marker {
+                    background-color: rgba(0,0,0,0.15);
+                }
+            }
+
+            &:active {
+                .swiper-navigation__item__marker {
+                    scale: 0.95;
+                }
+            }
+        }
+    }
+}

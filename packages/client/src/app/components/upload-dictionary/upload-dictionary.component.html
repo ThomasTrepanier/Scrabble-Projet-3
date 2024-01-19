@@ -1,0 +1,67 @@
+<!-- 
+<div class="container">
+  <h2 mat-dialog-title>Ajouter un dictionnaire</h2>
+  <div class="input-container">
+    <div>
+      <input
+      style="display: none"
+      type="file" (change)="handleFileInput($event.target)"
+      accept=".json"
+      #fileInput>
+        <button mat-button id="select-button" color="primary" (click)="fileInput.click()" style="width: 200px">
+          <app-icon icon="file"></app-icon>
+          Sélectionner un fichier
+        </button>
+      </div>
+      <div [className]="state" *ngIf="selectedFile" style="margin-left: auto; display: inline-table">
+        <app-icon color="primary" icon="file"></app-icon>
+        {{this.selectedFile.name}}
+      </div>
+  </div>
+  <div [className]="state">
+    <div class="feedback">
+        <div class="feedback-box-1">
+          <div class="column-1">
+            <div *ngIf="isDictionaryReady">
+              <span> Nom: </span>
+            </div>
+            <div *ngIf="state==='error'">
+              Erreur: 
+            </div>
+          </div>
+          <div class="column-2">
+            <div *ngIf="state==='error'">
+              {{this.errorMessage}}
+            </div>
+            <div *ngIf="isDictionaryReady">
+              {{this.newDictionary.title}}
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="feedback">
+      <div class="feedback-box-1">
+        <div class="column-1">
+          <div *ngIf="isDictionaryReady">
+            <span> Description: </span>
+          </div>
+        </div>
+        <div class="column-2">
+          <div *ngIf="isDictionaryReady">
+            {{this.newDictionary.description}}
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+  <div class="buttons-container"> 
+    <button mat-flat-button color="primary" (click)="onUpload()" [disabled]="!isDictionaryReady">
+      <app-icon icon="upload"></app-icon>
+      Ajouter
+    </button>
+    <button mat-button color="primary" (click)="closeDialog()">
+      <app-icon icon="ban"></app-icon>
+      Annuler
+    </button>
+  </div>
+</div> -->

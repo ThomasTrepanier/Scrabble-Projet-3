@@ -1,0 +1,98 @@
+#tiles {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    overflow: hidden;
+    app-tile {
+        position: absolute;
+        &:nth-child(1) {
+            height: calc(8vw + 8vh);
+            width: calc(8vw + 8vh);
+            bottom: -3vh;
+            left: 4vw;
+            font-size: calc(4vw + 4vh);
+            transform: rotate(-7deg);
+        }
+        &:nth-child(2) {
+            height: calc(5vw + 5vh);
+            width: calc(5vw + 5vh);
+            bottom: 20vh;
+            left: 6vw;
+            font-size: calc(2.5vw + 2.5vh);
+            transform: rotate(7deg);
+        }
+        &:nth-child(3) {
+            height: calc(6vw + 6vh);
+            width: calc(6vw + 6vh);
+            top: 50%;
+            right: 4vw;
+            font-size: calc(3vw + 3vh);
+            transform: rotate(5deg) translateY(-50%);
+        }
+        &:nth-child(4) {
+            height: calc(3vw + 3vh);
+            width: calc(3vw + 3vh);
+            top: 3vh;
+            right: 4vw;
+            font-size: calc(1.5vw + 1.5vh);
+            transform: rotate(8deg);
+        }
+        &:nth-child(5) {
+            height: calc(10vw + 10vh);
+            width: calc(10vw + 10vh);
+            top: 8vh;
+            left: -2vw;
+            font-size: calc(5vw + 5vh);
+            transform: rotate(16deg);
+        }
+        &:nth-child(6) {
+            height: calc(7vw + 7vh);
+            width: calc(7vw + 7vh);
+            top: 14vh;
+            right: 3vw;
+            font-size: calc(3.5vw + 3.5vh);
+            transform: rotate(-4deg);
+        }
+        &:nth-child(7) {
+            height: calc(12vw + 12vh);
+            width: calc(12vw + 12vh);
+            bottom: -4vh;
+            right: -3vw;
+            font-size: calc(6vw + 6vh);
+            transform: rotate(-10deg);
+        }
+    }
+}
+#page-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .content {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        app-page-header {
+            display: contents;
+        }
+
+        app-signup-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    #background {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-position: center !important;
+        background-size: cover !important;
+        opacity: 0.3;
+        z-index: -2;
+    }
+}

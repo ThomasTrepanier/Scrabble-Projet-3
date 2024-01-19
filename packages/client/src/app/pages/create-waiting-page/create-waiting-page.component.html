@@ -1,0 +1,18 @@
+<div class="container">
+    <app-group-info-detailed [group]="currentGroup" [isHost]="true" [isGroupEmpty]="isGroupEmpty" (startGame)="startGame()" [roundTime]="roundTime"></app-group-info-detailed>
+
+    <mat-card class="grid" *ngIf="isGamePrivate">
+            Joueurs en attente 
+            <div class="scrollable-container">
+                <ng-container *ngFor="let requestingUser of requestingUsers.requestingPlayers">
+                    <app-requesting-user-container [requestingUser]="requestingUser" [isGroupFull]="isGroupFull" [isObserver]="false"(acceptedUser)="acceptUser($event)" (rejectedUser)="rejectUser($event)"></app-requesting-user-container>
+                </ng-container>
+            </div>
+            Observateurs en attente
+            <div class="scrollable-container">
+                <ng-container *ngFor="let requestingUser of requestingUsers.requestingObservers">
+                    <app-requesting-user-container [requestingUser]="requestingUser" [isGroupFull]="false" [isObserver]="true" (acceptedUser)="acceptUser($event)" (rejectedUser)="rejectUser($event)"></app-requesting-user-container>
+                </ng-container>
+            </div>
+    </mat-card>
+</div>

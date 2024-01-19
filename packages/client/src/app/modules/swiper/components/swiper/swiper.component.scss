@@ -1,0 +1,23 @@
+.swiper {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+
+    &__slides {
+        overflow: hidden;
+
+        &__content {
+            display: flex;
+            transition: ease-out translate 0.5s;
+
+            ::ng-deep {
+                app-swiper-slide {
+                    width: 100%;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}

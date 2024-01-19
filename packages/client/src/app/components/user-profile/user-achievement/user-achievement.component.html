@@ -1,0 +1,23 @@
+<div class='achievement'>
+    <img
+        class='achievement__image'
+        [appSrc]='achievement.level?.image ?? achievement.achievement.defaultImage'
+        [alt]='achievement.achievement.name'
+        [square]='125'
+        (click)='openDialog()'
+    />
+
+    <div class='achievement__progress-container'>
+        <div class='achievement__progress' [ngStyle]='{width: progress * 100 + "%"}'></div>
+        <div class='achievement__progress-marks'>
+            <div class='achievement__progress-mark' *ngFor='let mark of levelsMarks'></div>
+        </div>
+    </div>
+
+    <div class='achievement__info'>
+        <p class='achievement__value'>{{achievement.value.toFixed(0)}}</p>
+        <p class='achievement__name'>{{achievement.achievement.name}}</p>
+        <p class='achievement__message achievement__message--maxed-out' *ngIf='messageType === "MaxedOut"'>Niveau maximum !</p>
+        <p class='achievement__message achievement__message--next-level' *ngIf='messageType === "NextLevel"'>Prochain niveau: <span class='achievement__message__points'>{{nextLevelPoints}}</span></p>
+    </div>
+</div>

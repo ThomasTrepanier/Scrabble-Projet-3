@@ -1,0 +1,135 @@
+@import '../../style/variables.scss';
+@import '../../style/utils.scss';
+
+.chatbox {
+    $gray: rgb(230, 230, 230);
+    $border-radius: 8px;
+    $border: solid 1px rgb(238, 238, 238);
+    $icon-size: 28px;
+
+    display: grid;
+    height: 400px;
+    width: 310px;
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr);
+    background-color: white;
+    border: $border;
+    border-bottom: none;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), 0 0 15px rgba(0, 0, 0, 0.05);
+
+    &__header {
+        padding: 12px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        border-bottom: $border;
+        border-top-left-radius: $border-radius - 1;
+        border-top-right-radius: $border-radius - 1;
+
+        & * {
+            @include no-select;
+        }
+
+        &__left,
+        &__right {
+            display: flex;
+            align-items: center;
+        }
+
+        &__left {
+            gap: 6px;
+        }
+
+        &__icon {
+            height: $icon-size;
+            width: $icon-size;
+            border-radius: $icon-size;
+            background-color: $gray;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        &__icons {
+            height: $icon-size;
+            width: $icon-size;
+            &--two-icons {
+                position: relative;
+
+                .chatbox__header__icon {
+                    $space: 3px;
+                    height: $icon-size / 1.4;
+                    width: $icon-size / 1.4;
+                    position: absolute;
+                    border: solid 1.5px white;
+
+                    &:nth-child(1) {
+                        top: -$space;
+                        left: -$space;
+                    }
+
+                    &:nth-child(2) {
+                        bottom: -$space;
+                        right: -$space;
+                    }
+                }
+            }
+        }
+
+        &__title {
+            font-weight: 500;
+            font-size: 1.15em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .chatbox--is-open & {
+            border-bottom: $border;
+        }
+    }
+
+    &__button {
+        border: none;
+        background-color: transparent;
+        font-size: 18px;
+        padding: 6px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: ease-in scale 0.1s;
+
+        &:hover {
+            background-color: rgba($gray, 0.2);
+        }
+
+        &:active {
+            scale: 0.925;
+            transition: ease-in scale 0.1s;
+        }
+    }
+
+    &--primary {
+        border-color: rgba(var(--primary), 0.5);
+
+        .chatbox__header {
+            background-color: rgb(var(--primary));
+            border-color: rgba(var(--primary), 0.5);
+            color: white;
+
+            &__icon {
+                background-color: white;
+            }
+
+            &::ng-deep {
+                app-icon {
+                    color: white;
+                }
+            }
+        }
+
+        //.chatbox__content {
+        //    background-color: rgba(var(--primary), 0.025);
+        //}
+    }
+}

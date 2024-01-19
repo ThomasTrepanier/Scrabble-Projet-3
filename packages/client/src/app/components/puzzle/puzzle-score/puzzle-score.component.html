@@ -1,0 +1,11 @@
+
+
+<div id='content' [ngStyle]='{ height: size + "px", width: size + "px" }' [ngClass]='["theme--" + color]'>
+    <div class='info' [ngStyle]='{ fontSize: size / 5 + "px" }'>
+        <app-icon class='icon' *ngIf='icon' [icon]='icon' styling='solid'></app-icon>
+        <p class='score' *ngIf='icon === undefined'>{{score}}</p>
+        <p class='total' *ngIf='icon === undefined'><span class='divide'>/</span>{{total}}</p>
+    </div>
+    <mat-progress-spinner class='spinner spinner--background' mode='determinate' [value]='full' [diameter]='size'></mat-progress-spinner>
+    <mat-progress-spinner class='spinner spinner--result' mode='determinate' [value]='result' [diameter]='size' [color]='color'></mat-progress-spinner>
+</div>

@@ -1,0 +1,97 @@
+@import '../../style/variables.scss';
+@import '../../style/utils.scss';
+
+::ng-deep body {
+    background: $page-background;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5vh;
+
+    mat-card {
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+        width: calc(100% - 24px);
+
+        &.top-box p:first-child {
+            font-size: larger;
+        }
+
+        .players {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 1vw;
+
+            .name {
+                font-size: 1.2em;
+            }
+
+            #vs {
+                font-size: 0.9em;
+                font-weight: 600;
+                opacity: 0.55;
+            }
+        }
+
+        mat-progress-bar {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .chip-list {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+
+            .chip {
+                @include no-select;
+                background: $gray;
+                padding: 2px 12px;
+                border-radius: 100px;
+                font-size: 0.85em;
+
+                app-icon {
+                    margin-right: 5px;
+                    width: 100%;
+                }
+
+                &:not(:last-child) {
+                    margin-right: 6px;
+                }
+            }
+        }
+    }
+
+    mat-card.top-box {
+        max-width: 350px;
+    }
+
+    mat-card.fun-fact-box {
+        max-width: 750px;
+        text-align: center;
+
+        #intro {
+            color: rgb(var(--primary));
+            font-weight: bold;
+            font-style: italic;
+            font-size: larger;
+        }
+    }
+}
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 250 px;
+    transform: translate(-50%, -50%);
+}

@@ -1,0 +1,27 @@
+{
+    "folders": [
+        {
+            "name": "LOG3900-103",
+            "path": "."
+        },
+        {
+            "name": "client",
+            "path": "packages/client"
+        },
+        {
+            "name": "server",
+            "path": "packages/server"
+        },
+        {
+            "name": "mobile",
+            "path": "packages/mobile"
+        },
+        {
+            "name": "common",
+            "path": "packages/common"
+        }
+    ],
+    "settings": {
+        "cSpell.words": ["typedi"]
+    }
+}

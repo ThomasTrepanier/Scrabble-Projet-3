@@ -1,0 +1,56 @@
+<div id="rack-grid" (click)="focus()">
+    <mat-card>
+        <div class="tile-rack-actions"
+            [matTooltip]="isObserver ? 'Vous ne pouvez pas faire d\'action en tant qu\'observateur' : 'Mélanger les tuiles'">
+            <button mat-flat-button color='primary' class='tile-rack-actions__button tile-rack-actions__button--shuffle'
+                (click)='shuffleTiles()' [disabled]='isObserver'>
+                <app-icon icon="random"></app-icon>
+            </button>
+        </div>
+
+        <div class="rack-card-container" [class]="'tile-rack selection-' + selectionType"
+            [ngClass]="{'is-shuffling': isShuffling}" cdkDropList cdkDropListOrientation="horizontal"
+            [cdkDropListData]="tiles" (cdkDropListDropped)="drop($event)" *ngIf="!isObserver">
+            <div class="rack-tile-container" *ngFor="let tile of tiles"
+                [ngClass]="{ selected: tile.isSelected, hidden: tile.isUsed }"
+                (cdkDragMoved)="dragAndDropService.onRackTileMove($event)"
+                (cdkDragDropped)="dragAndDropService.onRackTileDrop(tile)" (contextmenu)='onTileRightClick(tile)'
+                cdkDrag>
+                <app-tile [tile]="tile" [ngStyle]="{'fontSize': tileFontSize+'em'}" class="rack-tile">
+                    {{ tile.letter }}
+                </app-tile>
+            </div>
+        </div>
+
+        <div class="rack-card-container" [class]="'tile-rack selection-' + selectionType"
+            [ngClass]="{'is-shuffling': isShuffling}" cdkDropList cdkDropListOrientation="horizontal"
+            [cdkDropListData]="tiles" (cdkDropListDropped)="drop($event)" *ngIf="isObserver">
+            <div class="rack-tile-container" *ngFor="let tile of (observerTiles | async)"
+                [ngClass]="{ selected: tile.isSelected, hidden: tile.isUsed }">
+                <app-tile [tile]="tile" [ngStyle]="{'fontSize': tileFontSize+'em'}" class="rack-tile">
+                    {{ tile.letter }}
+                </app-tile>
+            </div>
+        </div>
+
+        <div class="tile-rack-actions" *ngIf="!isObserver">
+            <div
+                [matTooltip]="isObserver ? 'Vous ne pouvez pas faire d\'action en tant qu\'observateur' : (canExchangeTiles() ? 'Échanger' : 'Lors de votre tour, faites un clic droit sur une tuile pour l\'échanger')">
+                <button mat-flat-button color='primary'
+                    class='tile-rack-actions__button tile-rack-actions__button--exchange'
+                    [disabled]='isObserver || !canExchangeTiles()' (click)='exchangeTiles()'>
+                    <app-icon icon="exchange"></app-icon>
+                </button>
+            </div>
+
+            <div
+                [matTooltip]="isObserver ? 'Vous ne pouvez pas faire d\'action en tant qu\'observateur' : 'Annuler le placement'">
+                <button mat-flat-button color='primary'
+                    class='tile-rack-actions__button tile-rack-actions__button--cancel'
+                    [disabled]='isObserver || canCancelPlacement() === false' (click)='cancelPlacement()'>
+                    <app-icon icon="undo"></app-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,71 @@
+<div class="chatbox-container">
+    <div class="chatbox-container__chatboxes">
+        <ng-container *ngFor="let channel of getOpenedChannels() | async">
+            <app-chatbox-message [title]="channel.name" [messages]="channel.messages" [isPrimary]='isGameChannel(channel)' (sendMessage)="handleSendMessage(channel, $event)">
+                <app-icon-button action-button (click)="minimizeChannel(channel)">
+                    <app-icon icon="minus"></app-icon>
+                </app-icon-button>
+                <app-icon-button action-button (click)="handleQuitChannel(channel)" *ngIf="channel.canQuit">
+                    <app-icon icon="sign-out"></app-icon>
+                </app-icon-button>
+            </app-chatbox-message>
+        </ng-container>
+
+        <app-chatbox title="Canaux de discussion" [hideIcon]="true" *ngIf="channelMenuIsOpen">
+            <app-icon-button action-button (click)="closeMenu()">
+                <app-icon icon="minus"></app-icon>
+            </app-icon-button>
+
+            <!-- Create Channel Div -->
+            <div class="chatbox-container__channel-menu">
+                <div class="chatbox-container__section">
+                    <form [formGroup]="createChannelForm" (ngSubmit)="handleCreateChannel()">
+                        <mat-form-field appearance="outline" class="chatbox-container__create-channel">
+                            <mat-label>Trouver ou créer un canal</mat-label>
+                            <input matInput type="text" formControlName="createChannel" #createChannelInput [maxlength]="channelNameMaxLength" />
+                            <button mat-icon-button matSuffix><mat-icon>add</mat-icon></button>
+                        </mat-form-field>
+                    </form>
+                </div>
+                <div class="chatbox-container__section">
+                    <!-- Mes Canaux de discussion Div -->
+                    <p class="chatbox-container__section__title">Mes canaux</p>
+                    <div class="chatbox-container__my-channels__content">
+                        <div class="chatbox-container__my-channels__item" *ngFor="let channel of getChannelsForMenu() | async">
+                            <button [disabled]="!channel.canOpen" (mouseup)="showChannel(channel)" class="chatbox-container__my-channels__button">
+                                {{ channel.name }}
+                            </button>
+                            <div *ngIf="channel.canQuit" class="buttons-container">
+                                <app-icon-button (mouseup)="handleDeleteChannel(channel)">
+                                    <app-icon icon="trash"></app-icon>
+                                </app-icon-button>
+                                <app-icon-button (mouseup)="handleQuitChannel(channel)">
+                                    <app-icon icon="sign-out"></app-icon>
+                                </app-icon-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canaux Publics Div -->
+                <div class="chatbox-container__section">
+                    <p class="chatbox-container__section__title">Canaux Publics</p>
+                    <div class="chatbox-container__my-channels__content">
+                        <div class="chatbox-container__my-channels__item" *ngFor="let channel of getJoinableChannelsForMenu() | async">
+                            <button disabled class="chatbox-container__my-channels__button" style="color: black;">
+                                {{ channel.name }}
+                            </button>
+                            <app-icon-button (mouseup)="joinChannelFromMenu(channel)" *ngIf="channel.canQuit">
+                                <app-icon icon="plus"></app-icon>
+                            </app-icon-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </app-chatbox>
+    </div>
+
+    <button mat-fab color="white" class="chatbox-container__button" (click)="toggleMenu()" onclick="this.blur()" tabindex="-1">
+        <app-icon icon="edit" styling="solid"></app-icon>
+    </button>
+</div>

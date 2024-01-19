@@ -1,0 +1,98 @@
+<app-page-header *ngIf="!previousUrl" title="Profil utilisateur" buttonRoute="/search">
+    <app-header-btn link="/search" header-button><app-icon icon="search" styling="solid"></app-icon></app-header-btn>
+</app-page-header>
+<app-page-header *ngIf="previousUrl" title="Profil utilisateur" [buttonRoute]="previousUrl">
+</app-page-header>
+<div class="page">
+    <div class="page-content">
+        <ng-container *ngIf="(error$ | async) as error">
+            <mat-card>
+                <h2>Erreur</h2>
+                <p>{{error}}</p>
+            </mat-card>
+        </ng-container>
+
+        <ng-container>
+            <app-user-profile-info
+                *ngIf='(user$ | async) as user'
+                [avatar]="user.avatar"
+                [username]="user.username"
+            >
+            </app-user-profile-info>
+
+            <mat-card class="user-stats" *ngIf='(user$ | async) as user'>
+                <app-user-profile-stats-item title="Classement Elo" [value]="((user.statistics.rating| number:'1.0-0') ?? 1000)">
+                    <app-icon icon="trophy" styling="solid" stats-icon></app-icon>
+                </app-user-profile-stats-item>
+                <app-user-profile-stats-item title="Parties jouées" [value]="user.statistics.gamesPlayedCount">
+                    <app-icon icon="gamepad" styling="solid" stats-icon></app-icon>
+                </app-user-profile-stats-item>
+                <app-user-profile-stats-item title="Parties gagnées" [value]="user.statistics.gamesWonCount">
+                    <app-icon icon="crown" styling="solid" stats-icon></app-icon>
+                </app-user-profile-stats-item>
+                <app-user-profile-stats-item title="Moyenne de points" [value]="((user.statistics.averagePointsPerGame| number:'1.0-0') ?? 0) + ' pts'">
+                    <app-icon icon="poll-h" styling="solid" stats-icon></app-icon>
+                </app-user-profile-stats-item>
+                <app-user-profile-stats-item title="Temps moyen" [value]="(averageTimePerGame | async) ?? ''">
+                    <app-icon icon="clock" styling="solid" stats-icon></app-icon>
+                </app-user-profile-stats-item>
+            </mat-card>
+
+            <mat-card class='achievements'>
+                <h2>Badges</h2>
+                <div class='achievements__content'>
+                    <app-user-achievement *ngFor='let achievement of achievements | async' [achievement]='achievement'></app-user-achievement>
+                </div>
+            </mat-card>
+
+            <mat-card style="padding: 24px">
+                <h2>Historique de parties</h2>
+                <table
+                    mat-table [dataSource]="gameHistory"
+                    class="table"
+                >
+                    <tr mat-header-row *matHeaderRowDef="gameHistoryColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: gameHistoryColumns;"></tr>
+
+                    <ng-container matColumnDef="startTime">
+                        <th mat-header-cell *matHeaderCellDef>Début</th>
+                        <td mat-cell *matCellDef="let element"> {{element.startTime | date:'d MMMM YYYY, h:mm:ss'}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="endTime">
+                        <th mat-header-cell *matHeaderCellDef>Durée</th>
+                        <td mat-cell *matCellDef="let element"> {{(element.endTime.getTime() - element.startTime.getTime()) | duration}}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="gameResult">
+                        <th mat-header-cell *matHeaderCellDef>Résultat</th>
+                        <td mat-cell *matCellDef="let element">
+                            <div *ngIf="element.hasAbandoned" class="game-result game-result--abandoned" matTooltip="Abandonnée">
+                                <app-icon icon="pennant" styling="solid"></app-icon>
+                            </div>
+                            <div *ngIf="!element.hasAbandoned && element.isWinner" class="game-result game-result--winner" matTooltip="Gagnée">
+                                <app-icon icon="crown" styling="solid"></app-icon>
+                            </div>
+                            <div *ngIf="!element.hasAbandoned && !element.isWinner" class="game-result game-result--lost"  matTooltip="Perdue">
+                                <app-icon icon="times" styling="solid"></app-icon>
+                            </div>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="ratingVariation">
+                        <th mat-header-cell *matHeaderCellDef>Variation de Elo</th>
+                        <td mat-cell *matCellDef="let element"> {{element.ratingVariation > 0 ?"+": ''}}{{((element.ratingVariation| number:'1.0-0') ?? 0)}} Elo</td>
+                    </ng-container>
+                    <ng-container matColumnDef="score">
+                        <th mat-header-cell *matHeaderCellDef>Score</th>
+                        <td mat-cell *matCellDef="let element"> {{element.score}} pts</td>
+                    </ng-container>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]"
+                   showFirstLastButtons
+                   #gameHistoryPaginator></mat-paginator>
+            </mat-card>
+        </ng-container>
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+<div class="page">
+    <app-page-header title="Création de partie">
+        <app-header-btn link="/groups" header-button>Rejoindre une partie</app-header-btn>
+    </app-page-header>
+
+    <br />
+
+    <div class="container">
+        <div *ngIf="isCreatingGame" id="game-creation-waiting-container">
+            <app-loading-page></app-loading-page>
+        </div>
+        <mat-card *ngIf="!isCreatingGame">
+            <form [formGroup]="gameParameters" (ngSubmit)="onSubmit()">
+                <ng-container>
+                    <mat-label class="button-toggle-label" id="level-label">Choisissez le niveau des joueurs virtuels qui vont compléter les joueurs manquants</mat-label>
+                    <mat-button-toggle-group id="level-buttons" formControlName="level">
+                        <mat-button-toggle id="begginer-button" [value]="virtualPlayerLevels.Beginner">
+                            <mat-card class="content">
+                                <app-icon icon="turtle" styling="solid"></app-icon>
+                                <p class="text">{{ virtualPlayerLevels.Beginner }}</p>
+                            </mat-card>
+                        </mat-button-toggle>
+
+                        <mat-button-toggle id="expert-button" [value]="virtualPlayerLevels.Expert">
+                            <mat-card class="content">
+                                <app-icon icon="rabbit" styling="solid"></app-icon>
+                                <p class="text">{{ virtualPlayerLevels.Expert }}</p>
+                            </mat-card>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </ng-container>
+
+                <ng-container>
+                    <mat-label class="button-toggle-label" id="visiblity-label">Choisissez la visibilité de votre partie</mat-label>
+                    <mat-button-toggle-group id="visibility-buttons" formControlName="visibility">
+                        <mat-button-toggle id="public-button" [value]="gameVisibilities.Public">
+                            <mat-card class="content">
+                                <app-icon icon="globe" styling="solid"></app-icon>
+                                <p class="text">{{ gameVisibilities.Public }}</p>
+                            </mat-card>
+                        </mat-button-toggle>
+
+                        <mat-button-toggle id="protected-button" [value]="gameVisibilities.Protected">
+                            <mat-card class="content">
+                                <app-icon icon="shield" styling="solid"></app-icon>
+                                <p class="text">{{ gameVisibilities.Protected }}</p>
+                            </mat-card>
+                        </mat-button-toggle>
+
+                        <mat-button-toggle id="private-button" [value]="gameVisibilities.Private">
+                            <mat-card class="content">
+                                <app-icon icon="lock" styling="solid"></app-icon>
+                                <p class="text">{{ gameVisibilities.Private }}</p>
+                            </mat-card>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </ng-container>
+
+                <ng-container *ngIf="gameParameters.get('visibility')?.value === gameVisibilities.Protected">
+                    <mat-form-field
+                    appearance="outline"
+                    matTooltip="Le mot de passe doit être entre 1 et 20 caractères sans caractères spéciaux et sans espaces"
+                    matTooltipPosition="above"
+                >
+                    <mat-label><app-icon icon="lock"></app-icon> Mot de passe</mat-label>
+                    <input matInput id="password" type="text" formControlName="password" autocomplete="off" />
+                </mat-form-field>
+
+                </ng-container> 
+                
+                <mat-divider></mat-divider>
+
+                <app-timer-selection [parentForm]="gameParameters"></app-timer-selection>
+                <div class="buttons">
+                    <div
+                        class="button-container"
+                        matTooltip="Veuillez remplir tous les champs avec des données valides"
+                        [matTooltipDisabled]="isFormValid()"
+                        matTooltipPosition="above"
+                    >
+                        <button mat-flat-button color="primary" type="submit" id="create-game-button" [disabled]="!isFormValid()" cdkFocusInitial>
+                            Créer la partie
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

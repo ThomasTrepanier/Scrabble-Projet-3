@@ -1,0 +1,28 @@
+<div id="board" (click)="onBoardClick()" cdkDropListGroup>
+    <mat-grid-list cols="{{ ((grid | async) ?? []).length + 1 }}" rowHeight="fit" gutterSize="0px" id="board-grid" class="full-size">
+        <mat-grid-tile *ngFor="let item of [].constructor(((grid | async) ?? []).length + 1); let i = index" [colspan]="1" [rowspan]="1">
+            <p *ngIf="i > 0" class="letter-number-grid">{{ i }}</p>
+        </mat-grid-tile>
+
+        <div *ngFor="let squareRow of ((grid | async) ?? []); let i = index">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <p class="letter-number-grid">{{ letters[i] }}</p>
+            </mat-grid-tile>
+            <mat-grid-tile
+                *ngFor="let square of squareRow"
+                [colspan]="square.squareSize.x"
+                [rowspan]="square.squareSize.y"
+                class="square-background"
+                (click)='square.square.tile === null ? squareClickHandler($event, square) : undefined'
+            >
+                <app-square
+                    class="full-size"
+                    [squareView]="square"
+                    [canInteract]="canInteract"
+                    [isCursor]='square.isCursor || false'
+                    [cursorOrientation]='square.cursorOrientation'
+                ></app-square>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+</div>

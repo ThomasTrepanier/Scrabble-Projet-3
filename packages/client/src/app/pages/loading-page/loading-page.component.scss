@@ -1,0 +1,107 @@
+@import '../../style/variables.scss';
+
+::ng-deep body {
+    background: $page-background;
+}
+
+.loading-page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 36px;
+        gap: 36px;
+        max-width: 300px;
+
+        app-tile {
+            height: 64px;
+            width: 64px;
+            display: block;
+            font-size: 2.4em;
+            transform: rotate(0deg);
+        }
+
+        .messages {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.2em;
+            text-align: center;
+
+            .dot {
+                @for $i from 1 to 4 {
+                    &:nth-child(#{$i}) {
+                        @keyframes dot-#{$i} {
+                            0% {
+                                opacity: 0%;
+                            }
+                            #{$i * 10% + 24%} {
+                                opacity: 0%;
+                            }
+                            #{$i * 10% + 25%} {
+                                opacity: 100%;
+                            }
+                        }
+                        animation-name: dot-#{$i};
+                    }
+                }
+
+                animation-duration: 1.5s;
+                animation-iteration-count: infinite;
+                visibility: visible;
+            }
+
+            &.message {
+                font-weight: 500;
+            }
+
+            &.trying-message {
+                font-size: 1.1em;
+                opacity: 0.55;
+            }
+        }
+    }
+
+    &.error .message {
+        color: tomato;
+    }
+
+    &.is-loading,
+    &.is-trying {
+        mat-card app-tile {
+            @keyframes loading {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                10% {
+                    transform: rotate(-20deg);
+                }
+
+                60% {
+                    transform: rotate(375deg);
+                }
+
+                68% {
+                    transform: rotate(360deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            animation: loading 2s ease-in-out 0s infinite;
+        }
+    }
+}

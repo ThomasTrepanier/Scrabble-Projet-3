@@ -1,0 +1,45 @@
+@import '../../style/variables.scss';
+
+
+#positive-variation {
+    color: green;
+}
+
+#negative-variation {
+    color: red;
+}
+
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 500px;
+    justify-content: center;
+    min-height: 10px;
+}
+
+mat-dialog-actions{
+    justify-content: space-between;
+    .button {
+        background-color: rgb(231, 231, 231)
+    }
+}
+h2 {
+    text-align: center;
+}
+
+b {
+    margin-left: 3px;
+    margin-right: 5px;
+}
+
+.message {
+    display: flex;
+justify-content: center;
+padding-bottom: 15px;
+}
+
+.rating-container {
+    display: flex;
+justify-content: center;
+padding-bottom: 15px;
+}

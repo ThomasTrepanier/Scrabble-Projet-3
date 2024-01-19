@@ -1,0 +1,129 @@
+@import '../../style/variables.scss';
+@import '../../style/utils.scss';
+
+.puzzle-home {
+    padding-top: 60px;
+    min-height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & * {
+        @include no-select;
+    }
+
+    &__container {
+        display: flex;
+        padding: 24px;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    mat-card {
+        width: calc(100% - 48px);
+        max-width: 450px;
+    }
+
+    &__buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    &__leaderboard {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+
+        &__title,
+        &__subtitle {
+            margin: 0;
+            text-align: center;
+        }
+
+        &__subtitle {
+            opacity: 0.55;
+        }
+
+        &__items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        &__item {
+            display: grid;
+            grid-template-columns: auto auto minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            font-size: 1em;
+            border: none;
+            background: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: match-parent;
+            transition: ease-in scale 0.1s;
+
+            &__rank {
+                height: 2em;
+                width: 2em;
+                background-color: rgb(var(--primary));
+                color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                font-size: 1.1em;
+                font-weight: bold;
+            }
+
+            &__avatar {
+                border-radius: 100px;
+            }
+
+            &__username {
+                font-size: 1.2em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            &__score {
+                font-size: 1em;
+                font-weight: bold;
+                background-color: #eee;
+                padding: 4px 6px;
+                border-radius: 4px;
+            }
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.015);
+            }
+
+            &:active {
+                scale: 0.975;
+            }
+        }
+
+        &__empty {
+            text-align: center;
+            opacity: 0.55;
+            font-weight: 500;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        &__user {
+            &:not(:empty) {
+                font-size: 1em;
+                background-color: #eee;
+                padding: 4px 6px;
+                border-radius: 4px;
+                text-align: center;
+            }
+        }
+    }
+}

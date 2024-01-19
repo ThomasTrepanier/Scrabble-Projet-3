@@ -1,0 +1,39 @@
+<div class="login-container">
+    <mat-card>
+        <div class="header">
+            <h2>Connexion</h2>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" [formGroup]="loginForm">
+                <mat-label><app-icon icon="envelope"></app-icon> Courriel</mat-label>
+                <input
+                    matInput
+                    id="email"
+                    type="email"
+                    formControlName="email"
+                    autocomplete="off"
+                />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" [formGroup]="loginForm">
+                <mat-label><app-icon icon="lock"></app-icon> Mot de passe</mat-label>
+                <input
+                    matInput
+                    id="password"
+                    [type]="isPasswordShown ? 'text' : 'password'"
+                    formControlName="password"
+                    autocomplete="off"
+                />
+            </mat-form-field>
+
+            <div class="buttons">
+                <mat-checkbox [(ngModel)]="isPasswordShown" [ngModelOptions]="{ standalone: true }" color="primary">
+                    Afficher le mot de passe</mat-checkbox
+                >
+
+                <button mat-flat-button color="primary" type="submit" cdkFocusInitial>Se connecter</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

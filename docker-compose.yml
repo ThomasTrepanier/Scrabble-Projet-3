@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+    nginx:
+        image: nginx
+        depends_on:
+            - server
+            - client
+        volumes:
+            - ./conf/nginx/prod.d/:/etc/nginx/conf.d
+        ports:
+            - ${NGINX_PORT:-80}:80
+
+    server:
+        image: registry.gitlab.com/polytechnique-montr-al/log3900/23-1/equipe-103/log3900-103/server:${IMAGE_SERVER_VERSION:-latest}
+        environment:
+            PG_HOST: postgres
+            PG_PORT: 5432
+            PG_USER: root
+            PG_PASSWORD: uhdSAOUHhdsa87DSAUH7DSAHu
+            PG_DATABASE: scrabble
+            SERVER_URL: http://api.scrabble.cfstcyr.com/api
+        ports:
+            - 3000
+
+    client:
+        image: registry.gitlab.com/polytechnique-montr-al/log3900/23-1/equipe-103/log3900-103/client:${IMAGE_SERVER_VERSION:-latest}
+        ports:
+            - 80
+
+    postgres:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: uhdSAOUHhdsa87DSAUH7DSAHu
+            POSTGRES_DB: scrabble
+        volumes:
+            - db:/var/lib/postgresql/data
+
+volumes:
+    db:
+        driver: local

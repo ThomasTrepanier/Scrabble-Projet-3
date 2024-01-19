@@ -1,0 +1,11 @@
+.alert {
+    display: grid;
+    gap: 6px;
+    width: 100%;
+    grid-template-columns: auto minmax(0, 1fr);
+
+    &__content {
+        line-break: loose;
+        word-break: break-word;
+    }
+}

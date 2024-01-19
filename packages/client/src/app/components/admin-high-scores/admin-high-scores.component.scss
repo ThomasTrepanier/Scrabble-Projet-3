@@ -1,0 +1,99 @@
+// @import '../../style/variables.scss';
+
+// $border-radius: 6px;
+
+// ::ng-deep body {
+//     background: $page-background;
+// }
+
+// .center {
+//     display: grid;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// }
+
+// .page {
+//     margin: 25px;
+//     text-align: left;
+
+//     .container {
+//         display: flex;
+//         flex-direction: row;
+//         padding-top: 30px;
+//         gap: 15px;
+//         justify-content: space-between;
+//         text-align: center;
+
+//         .title {
+//             font-size: x-large;
+//             font-weight: bold;
+//             color: rgb(var(--primary));
+//         }
+
+//         .high-scores-box {
+//             width: 500px;
+//             border: solid 1px rgb(133, 133, 133);
+//             border-radius: 4px;
+
+//             #high-scores-header {
+//                 display: grid;
+//                 grid-template-columns: 1fr 2fr 1fr;
+//                 justify-self: center;
+//                 width: 100%;
+//                 vertical-align: middle;
+//                 height: 50px;
+//                 font-weight: bold;
+
+//                 box-sizing: border-box;
+//                 border-bottom: solid 1px rgb(133, 133, 133);
+
+//                 .rank,
+//                 .score,
+//                 .name {
+//                     display: flex;
+//                     align-items: center;
+//                     font-size: larger;
+//                     text-align: right;
+//                     justify-content: center;
+//                     box-sizing: border-box;
+//                 }
+//             }
+
+//             .high-score {
+//                 display: grid;
+//                 grid-template-columns: 1fr 2fr 1fr;
+//                 align-self: center;
+//                 justify-content: center;
+//                 align-items: center;
+//                 height: 50px;
+//                 font-family: Roboto, 'Helvetica Neue', sans-serif;
+
+//                 .rank,
+//                 .score,
+//                 .name {
+//                     display: flex;
+//                     align-items: center;
+//                     font-size: larger;
+//                     text-align: right;
+//                     justify-content: center;
+//                     box-sizing: border-box;
+//                 }
+//             }
+
+//             .high-score:nth-child(2n) {
+//                 background-color: rgba(rgb(var(--primary)), 0.15);
+//             }
+//         }
+
+//         .buttons {
+//             display: flex;
+//             justify-content: right;
+
+//             button {
+//                 font-size: 1.2em;
+//                 padding: 6px 16px;
+//             }
+//         }
+//     }
+// }

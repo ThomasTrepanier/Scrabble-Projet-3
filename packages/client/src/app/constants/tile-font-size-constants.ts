@@ -1,0 +1,9 @@
+export const RACK_TILE_MIN_FONT_SIZE = 1.1;
+export const RACK_TILE_MAX_FONT_SIZE = 1.5;
+export const RACK_TILE_DEFAULT_FONT_SIZE = 1.3;
+export const RACK_FONT_SIZE_INCREMENT = 0.1;
+
+export const SQUARE_TILE_MIN_FONT_SIZE = 0.82;
+export const SQUARE_TILE_MAX_FONT_SIZE = 1.06;
+export const SQUARE_TILE_DEFAULT_FONT_SIZE = 0.94;
+export const SQUARE_FONT_SIZE_INCREMENT = 0.06;

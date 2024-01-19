@@ -1,0 +1,80 @@
+<div id="page">
+    <mat-card>
+        <app-board
+            [grid]="grid"
+            [canInteract]="(isPlaying | async) ?? false"
+            (onSquareClick)='handleSquareClick($event)'
+        ></app-board>
+    </mat-card>
+
+    <div class="puzzle-info">
+        <mat-card>
+            <div class="timer" [ngClass]="{ 'timer--no-timer': timer === undefined, 'timer--almost-done': timer && timer.getTime() <= 20, 'timer--critical': timer && timer.getTime() <= 5}">
+                <div class="content">
+                    <app-icon icon="hourglass-half"></app-icon>
+                    <span class="time-left">
+                        <span class="minutes">{{ timer?.minutes ?? 0 }}</span>
+                        <span class="separator">:</span>
+                        <span class="seconds">{{ timer?.getTimerSecondsPadded() ?? '00' }}</span>
+                    </span>
+                </div>
+                <span class="label">Temps restant</span>
+            </div>
+        </mat-card>
+        <mat-card class='puzzle-history-container'>
+            <app-puzzle-history [results]='history'></app-puzzle-history>
+        </mat-card>
+    </div>
+
+    <mat-card id="tile-rack">
+        <ng-container *ngIf="isPlaying | async">
+            <div
+                class="tile-rack"
+                cdkDropList
+                cdkDropListOrientation="horizontal"
+                [cdkDropListData]="(tiles | async) ?? []"
+                (cdkDropListDropped)="drop($event)"
+            >
+                <div class="rack-tile-container"
+                    *ngFor="let tile of (tiles | async)" [ngClass]="{ selected: tile.isSelected, hidden: tile.isUsed }"
+                    (cdkDragMoved)="dragAndDropService.onRackTileMove($event)"
+                    (cdkDragDropped)="dragAndDropService.onRackTileDrop(tile)"
+                    cdkDrag
+                >
+                    <app-tile [tile]="tile" class="rack-tile">
+                        {{ tile.letter }}
+                    </app-tile>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="(isPlaying | async) === false">
+            <div
+                class="tile-rack"
+            >
+                <div
+                    class="rack-tile-container"
+                    *ngFor="let tile of (tiles | async)"
+                    [ngClass]="{ selected: tile.isSelected, hidden: tile.isUsed }"
+                >
+                    <app-tile [tile]="tile" class="rack-tile">
+                        {{ tile.letter }}
+                    </app-tile>
+                </div>
+            </div>
+        </ng-container>
+
+        <div class="buttons">
+            <button mat-flat-button color="primary" (click)="cancelPlacement()" [disabled]="(canCancelPlacement() | async) === false || (isPlaying | async) === false"><app-icon icon="undo"></app-icon> Annuler</button>
+            <button mat-flat-button color="primary" (click)="shuffleTiles()" [disabled]="(isPlaying | async) === false"><app-icon icon="random"></app-icon> Mélanger</button>
+        </div>
+    </mat-card>
+
+    <mat-card class="puzzle-actions">
+        <button mat-flat-button class="button-danger" (click)="abandon()" [disabled]="(isPlaying | async) === false"><app-icon icon="flag" styling="solid"></app-icon> Abandonner</button>
+        <div class='action-container' matTooltip='Placez un placement valide pour jouer' [matTooltipDisabled]='(canPlay() | async) === true && (isPlaying | async) === true'>
+            <button mat-flat-button color="primary" (click)="play()" [disabled]="(canPlay() | async) === false || (isPlaying | async) === false"><app-icon icon="play" styling="solid"></app-icon> Placer</button>
+        </div>
+    </mat-card>
+</div>
+

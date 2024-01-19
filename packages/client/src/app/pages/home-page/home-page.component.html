@@ -1,0 +1,62 @@
+<app-page-header [hideBackButton]="true">
+    <img [appSrc]="(logo | async) ?? defaultLogo" [height]="22" header-title />
+</app-page-header>
+
+<div id="page-content">
+    <div id="tiles">
+        <app-tile [tile]="{ letter: 'C', value: 3 }"></app-tile>
+        <app-tile [tile]="{ letter: 'I', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'L', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'H', value: 4 }"></app-tile>
+        <app-tile [tile]="{ letter: 'M', value: 2 }"></app-tile>
+        <app-tile [tile]="{ letter: 'E', value: 1 }"></app-tile>
+        <app-tile [tile]="{ letter: 'G', value: 2 }"></app-tile>
+    </div>
+
+    <div class="content">
+        <img [appSrc]="(logo | async) ?? defaultLogo" [width]="800" alt="Logo Scrabble" />
+        <section id="button-group" class="justified">
+            <button mat-flat-button color="primary" [routerLink]="routeGameCreation">Créer une partie</button>
+            <button mat-flat-button color="primary" [routerLink]="routeGroups">Rejoindre une partie</button>
+            <button mat-flat-button color="primary" [routerLink]="routePuzzle">Puzzle</button>
+            <button mat-flat-button color="primary" [routerLink]="routeLeaderboard">Classement</button>
+        </section>
+        <div class="footer-item">
+            <h4 class="team-name">Équipe 103</h4>
+            <p>
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/thomas-tr%C3%A9panier/"
+                        ><app-tile [tile]="{ letter: 'T', value: 0 }" [hideValue]="true"></app-tile></a
+                    >homas Trépanier</span
+                >
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/rachad-chazbek-a06489212/"
+                        ><app-tile [tile]="{ letter: 'R', value: 0 }" [hideValue]="true"></app-tile></a
+                    >achad Chazbek</span
+                >
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/cfstcyr/"
+                        ><app-tile [tile]="{ letter: 'C', value: 0 }" [hideValue]="true"></app-tile></a
+                    >harles-François St-Cyr</span
+                >
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/ahmed-mewloud-b0a481195/"
+                        ><app-tile [tile]="{ letter: 'A', value: 0 }" [hideValue]="true"></app-tile></a
+                    >hmed Mewloud</span
+                >
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/raphael-salvas/"
+                        ><app-tile [tile]="{ letter: 'R', value: 0 }" [hideValue]="true"></app-tile></a
+                    >aphael Salvas</span
+                >
+                <span
+                    ><a class="home-tile-name" href="https://www.linkedin.com/in/bourdache-amine-26b67a22a/"
+                        ><app-tile [tile]="{ letter: 'A', value: 0 }" [hideValue]="true"></app-tile></a
+                    >mine Bourdache</span
+                >
+            </p>
+        </div>
+    </div>
+
+    <div id="background" style="background: url('assets/img/board_background.svg')"></div>
+</div>

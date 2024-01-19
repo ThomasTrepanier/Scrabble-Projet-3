@@ -1,0 +1,19 @@
+.icon-button {
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: ease-in scale 0.1s;
+
+    &:hover {
+        background-color: rgba(gray, 0.05);
+    }
+
+    &:active {
+        scale: 0.925;
+        transition: ease-in scale 0.1s;
+    }
+}

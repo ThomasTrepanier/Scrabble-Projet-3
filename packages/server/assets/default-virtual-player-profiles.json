@@ -1,0 +1,10 @@
+{
+    "virtualPlayerProfiles": [
+        { "name": "Herménégilde", "level": "Débutant", "isDefault": true },
+        { "name": "Aristote", "level": "Débutant", "isDefault": true },
+        { "name": "Astrid", "level": "Débutant", "isDefault": true },
+        { "name": "Ariane Petite", "level": "Expert", "isDefault": true },
+        { "name": "Alex Térieur", "level": "Expert", "isDefault": true },
+        { "name": "Gee Nette", "level": "Expert", "isDefault": true }
+    ]
+}

@@ -1,0 +1,183 @@
+@import '../../style/animations.scss';
+@import '../../style/utils.scss';
+
+$selected-color: rgb(64, 218, 115);
+
+.full-size {
+    height: 100%;
+    width: 100%;
+}
+
+app-square {
+    transform: scale(2, 2);
+}
+.square {
+    @include no-select();
+
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: ease-in transform 0.05s;
+    box-sizing: border-box;
+    padding: 1px;
+
+    .inner {
+        padding: 2px;
+    }
+
+    &.no-tile {
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+            z-index: 1;
+            transition: ease-in transform 0.1s;
+        }
+    }
+
+    &.has-tile {
+        cursor: default;
+    }
+
+    &.cursor,
+    &--hovered {
+        @keyframes blink-border {
+            0% {
+                border: solid 4px $selected-color;
+            }
+            30% {
+                border: solid 4px transparent;
+            }
+            60% {
+                border: solid 4px $selected-color;
+            }
+            100% {
+                border: solid 4px $selected-color;
+            }
+        }
+        
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: rgba($selected-color, 30%);
+            animation: blink-border;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+        }
+
+        &:after {
+            @keyframes blink-arrow {
+                0% {
+                    color: $selected-color;
+                }
+                30% {
+                    color: transparent;
+                }
+                60% {
+                    color: $selected-color;
+                }
+                100% {
+                    color: $selected-color;
+                }
+            }
+
+            position: absolute;
+            z-index: 100;
+            color: $selected-color;
+            font-size: 1.2em;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+            animation: blink-arrow;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+        }
+
+        &.cursor-horizontal:after {
+            content: "▶";
+            top: 50%;
+            right: -7px;
+            transform: translate(100%, -50%);
+        }
+
+        &.cursor-vertical:after {
+            content: "▼";
+            left: 50%;
+            bottom: -5px;
+            transform: translate(-50%, 100%);
+        }
+    }
+
+    &--hovered {
+        &:after {
+            content: '' !important;
+            display: none !important;
+        }
+    }
+
+    .content {
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+
+        .multiplier {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.75;
+            
+            p {
+                margin: 0;
+            }
+            p.type {
+                display: block;
+                font-size: 8px;
+                line-height: 1em;
+                text-transform: uppercase;
+            }
+            p.value {
+                display: block;
+                line-height: 1em;
+            }
+        }
+
+        .star {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.tile-container {
+    &.cdk-drag-preview {
+        height: 42px !important;
+        width: 42px !important;
+        font-size: 1.1em;
+
+        & > * {
+            animation: wiggle 0.25s infinite;
+        }
+        app-tile {
+            scale: 2 !important;
+            animation: wiggle 0.25s infinite;
+        }
+    }
+
+    &.cdk-drag-placeholder {
+        opacity: 0;
+    }
+}

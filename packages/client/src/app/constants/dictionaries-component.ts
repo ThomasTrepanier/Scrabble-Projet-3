@@ -1,0 +1,1 @@
+export const SNACK_BAR_ERROR_DURATION = 100000;

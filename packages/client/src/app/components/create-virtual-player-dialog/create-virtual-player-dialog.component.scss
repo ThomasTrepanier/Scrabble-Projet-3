@@ -1,0 +1,130 @@
+// @import '../../style/variables.scss';
+
+// .primary {
+//     color: rgb(var(--primary));
+// }
+
+// #buttons-container {
+//     text-align: right;
+// }
+
+// .inner-container {
+//     display: flex;
+//     flex-direction: column;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// $border-radius: 6px;
+
+// :host ::ng-deep {
+//     span.mat-button-toggle-label-content {
+//         line-height: 1em;
+//         height: 100%;
+//         width: 100%;
+//         padding: 0;
+//         border-radius: $border-radius;
+//     }
+// }
+
+// .container {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: flex-start;
+
+//     & > mat-card {
+//         margin: 0 12px;
+//     }
+
+//     form {
+//         mat-button-toggle-group,
+//         mat-form-field {
+//             width: 100%;
+//         }
+
+//         mat-button-toggle-group {
+//             margin-top: 0.67em;
+//             margin-bottom: 1.34375em;
+//             text-align: center;
+//         }
+
+//         mat-button-toggle-group {
+//             display: grid;
+//             grid-template-columns: repeat(2, 1fr);
+//             gap: 12px;
+//             border: none;
+//             overflow: visible;
+
+//             mat-button-toggle {
+//                 border-radius: 6px;
+//                 background: transparent;
+//                 border: none;
+//                 overflow: visible;
+
+//                 mat-card.content {
+//                     background: white;
+//                     border-radius: 6px;
+//                     border: none;
+//                     box-sizing: border-box;
+//                     display: block;
+//                     width: 100%;
+//                     border: solid 1px rgb(236, 236, 236);
+//                     padding: 8px;
+//                 }
+//                 p,
+//                 app-icon {
+//                     margin: auto;
+//                     line-height: 1em !important;
+//                 }
+
+//                 app-icon {
+//                     font-size: 1.3em;
+//                     margin-bottom: 0.3em;
+//                     display: block;
+//                 }
+
+//                 p {
+//                     font-size: 0.9em;
+//                 }
+
+//                 &.mat-button-toggle-checked {
+//                     mat-card.content {
+//                         background-color: rgba(var(--primary), 0.15);
+//                         border: solid 1px rgba(var(--primary), 0.1);
+//                         app-icon {
+//                             color: rgb(var(--primary));
+//                         }
+//                     }
+//                 }
+
+//                 &.mat-button-toggle-disabled {
+//                     mat-card.content {
+//                         background-color: rgb(241, 241, 241);
+//                         border-color: rgb(241, 241, 241);
+//                         color: rgba(0, 0, 0, 0.459);
+//                     }
+//                 }
+//             }
+//         }
+
+//         mat-label.button-toggle-label {
+//             display: block;
+//             margin-bottom: 0.25em;
+//         }
+
+//         mat-form-field.margin-top {
+//             margin-top: 1.34375em;
+//         }
+//     }
+
+//     .buttons {
+//         display: flex;
+//         justify-content: flex-end;
+
+//         button {
+//             font-size: 1.2em;
+//             padding: 6px 16px;
+//         }
+//     }
+// }

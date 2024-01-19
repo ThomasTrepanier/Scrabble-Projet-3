@@ -1,0 +1,75 @@
+version: '3.3'
+
+services:
+    nginx:
+        image: nginx
+        depends_on:
+            - server
+            - client
+        volumes:
+            - ./conf/nginx/dev.d/:/etc/nginx/conf.d
+        ports:
+            - ${NGINX_PORT:-80}:80
+
+    server:
+        image: log3990-server:dev
+        build:
+            target: server-dev
+        volumes:
+            - ./packages/server:/var/www/app
+            - ./packages/common:/var/www/common
+        ports:
+            - ${SERVER_PORT:-3000}:3000
+        environment:
+            PG_HOST: postgres
+            PG_PORT: 5432
+            PG_USER: root
+            PG_PASSWORD: root
+            PG_DATABASE: scrabble
+            SERVER_URL: http://server:${SERVER_PORT:-3000}/api
+
+    client:
+        image: log3990-client:dev
+        profiles: ['with-client']
+        build:
+            target: client-dev
+        volumes:
+            - ./packages/client:/var/www/app
+            - ./packages/common:/var/www/common
+        ports:
+            - ${CLIENT_PORT:-4200}:4200
+
+    storybook:
+        image: node:14.15
+        volumes:
+            - ./packages/client:/var/www/app
+            - ./packages/common:/var/www/common
+        working_dir: /var/www/app
+        command: npm run docker:storybook
+        ports:
+            - 6006:6006
+
+    postgres:
+        image: postgres
+        restart: unless-stopped
+        ports:
+            - ${PG_PORT:-5432}:5432
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: root
+            POSTGRES_DB: scrabble
+        volumes:
+            - db:/var/lib/postgresql/data
+
+    pgadmin:
+        image: dpage/pgadmin4
+        restart: unless-stopped
+        ports:
+            - ${PG_ADMIN_PORT:-55432}:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: root@pgadmin.com
+            PGADMIN_DEFAULT_PASSWORD: root
+
+volumes:
+    db:
+        driver: local

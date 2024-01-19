@@ -1,0 +1,26 @@
+<app-page-header title="Recherche d'utilisateur">
+    <app-header-btn link="/search" header-button><app-icon icon="search" styling="solid"></app-icon></app-header-btn>
+</app-page-header>
+
+<div class="page">
+    <div class="page-content">
+        <mat-card>
+            <input type="text" class="search-field" placeholder="Recherche..." [formControl]="searchField" />
+        </mat-card>
+        <mat-card>
+            <h4>Résultats</h4>
+
+            <ng-container *ngIf="(hasResults | async) === false">
+                <p *ngIf="(searchValue | async) === ''" class="search-help">Commencez à entrer un pseudonyme</p>
+                <p *ngIf="(searchValue | async) !== ''" class="search-help">Aucun résultat pour "{{searchField.value}}"</p>
+            </ng-container>
+
+            <div *ngFor="let result of ((results | async) ?? { results: [] }).results" class="search-results">
+                <button class="search-result-item" [routerLink]="result.username">
+                    <img [appSrc]="result.avatar" [square]="42">
+                    <span>{{result.username}}</span>
+                </button>
+            </div>
+        </mat-card>
+    </div>
+</div>
