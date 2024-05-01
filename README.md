@@ -1,5 +1,7 @@
 # LOG3990 - 103
 
+![Partie](https://github.com/ThomasTrepanier/Scrabble-Projet-3/assets/47257055/84a6e061-74be-4ab2-89eb-f46419b2dfbc)
+
 ## Installation
 
 1. Install the dependencies with `npm ci` in `packages/client` and `packages/server`.
